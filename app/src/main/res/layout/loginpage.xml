@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bluerectangle">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="367dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginBottom="40dp"
+        android:paddingStart="90dp"
+        android:text="Welcome Back "
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="164dp" />
+
+    <EditText
+        android:id="@+id/etUniqueId"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_card"
+        android:hint="Unique Id"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="352dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_card"
+        android:hint="Password"
+        android:textColor="@color/black"
+
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="416dp" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#1E88E5"
+
+        android:text="Next..."
+        tools:layout_editor_absoluteX="292dp"
+        tools:layout_editor_absoluteY="565dp" />
+
+
+</LinearLayout>
