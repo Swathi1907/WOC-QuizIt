@@ -1,47 +1,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="#F5F6FA"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tvQuestion"
         android:layout_width="399dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvA"
-
+        android:textColor="@color/black"
         android:layout_width="401dp"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvB"
         android:layout_width="401dp"
+        android:textColor="@color/black"
+
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvC"
         android:layout_width="401dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvD"
         android:layout_width="401dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvCorrect"
         android:layout_width="401dp"
+
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:textColor="#2E7D32"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvExplanation"
         android:layout_width="401dp"
+        android:textColor="@color/black"
         android:layout_height="111dp"
-        android:textColor="#555555" />
+        />
 
 </LinearLayout>

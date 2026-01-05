@@ -15,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.appdevelopment.project5.room.QuizResultEntity
+import com.google.firebase.auth.FirebaseAuth
 
 class QuizActivity : AppCompatActivity() {
 
@@ -116,8 +117,14 @@ lifecycleScope.launch(Dispatchers.IO) {
     // helper to load questions from Room on IO dispatcher
     private suspend fun loadQuestionsFromDB(id: Long): List<QuizQuestionEntity> {
         return withContext(Dispatchers.IO) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+            ?: throw IllegalStateException("User not logged in")
+
             val db = AppDatabase.getDatabase(this@QuizActivity)
-            db.quizDao().getQuestionsForQuiz(id)
+            db.quizDao().getQuestionsForQuiz(
+                id,
+                userId = userId
+            )
         }
     }
 }

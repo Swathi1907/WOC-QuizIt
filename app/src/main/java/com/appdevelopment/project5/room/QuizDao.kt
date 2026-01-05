@@ -18,13 +18,18 @@ interface QuizDao {
     @Query(
         """
         SELECT * FROM QuizQuestionEntity
-        WHERE quizId = :quizId
+        WHERE quizId = :quizId AND userId = :userId
         ORDER BY number ASC
     """
     )
     fun getQuestionsForQuiz(
-        quizId: Long
+        quizId: Long,
+        userId: String
     ): List<QuizQuestionEntity>
 
+@Query("SELECT * FROM Quiz_Results ORDER BY timestamp ASC")
+fun getAllResults(): List<QuizResultEntity>
 
+@Query("DELETE FROM QuizQuestionEntity")
+fun clearAllQuestions()
 }

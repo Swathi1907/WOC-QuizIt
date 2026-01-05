@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="#F5F6FA">
 
     <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Performance"
@@ -24,8 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quiz score progress over time"
-        android:textSize="14sp"
-        android:textColor="#666666"
+        android:textSize="19sp"
+        android:textColor="#3949AB"
         android:layout_marginBottom="16dp" />
 
     <!-- Line Chart -->

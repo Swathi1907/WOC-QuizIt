@@ -39,6 +39,7 @@
         android:layout_marginTop="39dp"
         android:text="Username"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="297dp" />
@@ -71,12 +72,13 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/btnSignOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="130dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="#039BE5"
-        android:text="Log Out" />
+        android:text="Sign Out" />
 
 
 </LinearLayout>

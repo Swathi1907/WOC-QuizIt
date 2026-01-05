@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 data class QuizQuestionEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,
+    val userId: String,
     val quizId: Long,
     val number: Int,
     val question: String,

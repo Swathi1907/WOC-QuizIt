@@ -34,6 +34,7 @@ import com.appdevelopment.project5.parser.JsonQuizParser
 import com.appdevelopment.project5.parser.RegexQuizParser
 import com.appdevelopment.project5.room.AppDatabase
 import com.appdevelopment.project5.room.QuizQuestionEntity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.mlkit.vision.text.TextRecognizer
 import kotlinx.coroutines.tasks.await
 
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity() {
     private val PDFPICKCODE = 2001
     private lateinit var btnGenerateAI: Button
     private lateinit var tvOutput: TextView
+    private var selectedCount =0
+    private var selectedDifficulty = ""
 private var extractedText: String=""
 
     @SuppressLint("SuspiciousIndentation")
@@ -58,7 +61,9 @@ Log.d("KEY_TEST","Gemini key = ${GeminiConfig.API_KEY}")
         val btnExtractedText = findViewById<Button>(R.id.btnExtractedText)
         tvOutput = findViewById(R.id.tvOutput)
          btnGenerateAI = findViewById(R.id.btnGenerateAI)
-
+selectedCount = intent.getIntExtra("count", 5)
+        selectedDifficulty = intent.getStringExtra("difficulty")?:"medium"
+        Log.d("QuizSetUpActivity","count=$selectedCount , difficulty=$selectedDifficulty")
 
         btnGenerateAI.setOnClickListener {
          val content= extractedText.trim()
@@ -68,7 +73,7 @@ Log.d("KEY_TEST","Gemini key = ${GeminiConfig.API_KEY}")
             }
 val safeContent = content.take(2000)
             //Temporary: Ask for 3 questions
-           val prompt = PromptBuilder.buildPrompt(content = safeContent, 5)
+           val prompt = PromptBuilder.buildPrompt(content = safeContent, count = selectedCount, difficulty = selectedDifficulty)
 
             callGeminiDirect(prompt)
         }
@@ -214,6 +219,11 @@ btnExtractedText.setOnClickListener {
 
         lifecycleScope.launch {
             try {
+                val userId = FirebaseAuth.getInstance().currentUser?.uid
+                    ?: run {
+                       Toast.makeText(this@MainActivity,"user",Toast.LENGTH_SHORT).show()
+                        return@launch
+                    }
                 Log.d("GEMINI_CALL","Calling Gemini API....")
                 val request = GeminiRequest(
                     contents = listOf(
@@ -267,6 +277,7 @@ Log.d("GEMINI_RAW",response.body().toString())
 
                 val entities = parsed.mapIndexed { index, q ->
                     QuizQuestionEntity(
+                        userId = userId,
                         quizId = quizId,
                         number = index + 1,
                         question = q.question,
