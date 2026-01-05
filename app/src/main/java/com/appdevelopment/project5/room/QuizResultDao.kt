@@ -14,7 +14,7 @@
 
         @Query("SELECT * FROM quiz_results ORDER BY timestamp DESC")
         fun getAllResults(): List<QuizResultEntity>
-
+//
         @Query("DELETE FROM quiz_results")
         fun clearAllResults()
     }

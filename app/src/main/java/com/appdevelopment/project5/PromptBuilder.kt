@@ -1,5 +1,5 @@
 object PromptBuilder {
-
+//
     fun buildPrompt(
         content: String,
         count: Int,

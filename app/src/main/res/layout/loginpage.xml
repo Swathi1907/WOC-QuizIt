@@ -21,7 +21,6 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="55dp"
         tools:layout_editor_absoluteY="164dp" />
-
     <EditText
         android:id="@+id/etUniqueId"
         android:layout_width="355dp"

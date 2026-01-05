@@ -14,7 +14,7 @@ interface QuizDao {
     fun insertQuestions(
         questions: List<QuizQuestionEntity>
     )
-
+//
     @Query(
         """
         SELECT * FROM QuizQuestionEntity

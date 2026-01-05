@@ -30,7 +30,7 @@ class QuizResultAdapter(
             .inflate(R.layout.item_result, parent, false)
         return QuizResultViewHolder(view)
     }
-
+//
     override fun onBindViewHolder(holder: QuizResultViewHolder, position: Int) {
         val result = quizResults[position]
 

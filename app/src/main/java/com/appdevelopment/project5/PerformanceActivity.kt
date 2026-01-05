@@ -36,7 +36,7 @@ class PerformanceActivity : AppCompatActivity() {
             }
         }
     }
-
+//
     private fun setupChart(
         chart: LineChart,
         results: List<QuizResultEntity>

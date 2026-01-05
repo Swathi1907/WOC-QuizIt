@@ -27,7 +27,7 @@ val btnAttemptedQuizzes = findViewById<Button>(R.id.btnAttemptedQuizzes)
           val profile = findViewById<ImageView>(R.id.imageView2)
         val btnPerformances = findViewById<Button>(R.id.btnPerformances)
         pvQuizzes.layoutManager = LinearLayoutManager(this)
-
+//
 profile.setOnClickListener {
     val intent = Intent(this, ProfileActivity::class.java)
     startActivity(intent)

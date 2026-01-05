@@ -30,7 +30,7 @@ class LoginPage : AppCompatActivity() {
             loginUser()
         }
     }
-
+//
     private fun loginUser() {
         val uniqueId = etUniqueId.text.toString().trim()
         val password = etPassword.text.toString().trim()

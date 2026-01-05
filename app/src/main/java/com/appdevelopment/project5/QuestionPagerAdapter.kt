@@ -11,7 +11,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.appdevelopment.project5.room.QuizQuestionEntity
-
+//
 class QuestionPagerAdapter(
     private val questions: List<QuizQuestionEntity>,
     private val context: Context

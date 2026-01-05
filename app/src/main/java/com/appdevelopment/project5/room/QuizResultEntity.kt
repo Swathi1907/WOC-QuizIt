@@ -15,3 +15,4 @@ data class QuizResultEntity(
     val timestamp: Long = System.currentTimeMillis()
 
 )
+//

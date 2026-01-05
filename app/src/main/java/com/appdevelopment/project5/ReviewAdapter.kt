@@ -20,7 +20,6 @@ class ReviewAdapter(
         val correct: TextView = view.findViewById(R.id.tvCorrect)
         val explanation: TextView = view.findViewById(R.id.tvExplanation)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewVH {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_review_question, parent, false)

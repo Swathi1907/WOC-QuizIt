@@ -24,7 +24,7 @@ class ProfileActivity : AppCompatActivity() {
         val tvEmailid = findViewById<TextView>(R.id.tvEmailid)
 val UniqueId = findViewById<TextView>(R.id.tvUniqueId)
         val btnSignOut = findViewById<Button>(R.id.btnSignOut)
-
+//
         btnSignOut.setOnClickListener {
 
             lifecycleScope.launch {

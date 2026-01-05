@@ -14,7 +14,7 @@
 android:id="@+id/main"
         android:padding="20dp"
         tools:ignore="InvalidId">
-
+//
         <!-- Title -->
         <TextView
             android:text="QuizzIt"

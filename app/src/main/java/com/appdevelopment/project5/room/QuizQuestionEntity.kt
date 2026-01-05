@@ -21,3 +21,4 @@ data class QuizQuestionEntity(
     val correctOption: String,
     var selectedOption: Int = -1
 )
+//

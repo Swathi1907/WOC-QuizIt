@@ -53,7 +53,7 @@ class SignUpActivity: AppCompatActivity() {
                         Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
                     }
                 }
-
+//
 
         }
     }

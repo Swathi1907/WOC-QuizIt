@@ -18,7 +18,6 @@ class QuizSetUpActivity : AppCompatActivity() {
         btnNext2.setOnClickListener {
             val count = count.text.toString().toInt()
             val difficulty = difficulty.selectedItem.toString()
-
                 intent.putExtra("count", count)
             intent.putExtra("difficulty", difficulty)
             val intent = Intent(this, MainActivity::class.java)

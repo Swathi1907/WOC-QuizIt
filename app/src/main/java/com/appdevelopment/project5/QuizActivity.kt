@@ -113,7 +113,7 @@ lifecycleScope.launch(Dispatchers.IO) {
 
         }
     }
-
+//
     // helper to load questions from Room on IO dispatcher
     private suspend fun loadQuestionsFromDB(id: Long): List<QuizQuestionEntity> {
         return withContext(Dispatchers.IO) {
