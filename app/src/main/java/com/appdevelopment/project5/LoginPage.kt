@@ -2,6 +2,7 @@ package com.appdevelopment.project5
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -11,7 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginPage : AppCompatActivity() {
 
-    private lateinit var etUniqueId: EditText
+    private lateinit var etUsername: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
 
@@ -22,7 +23,7 @@ class LoginPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.loginpage)
 
-        etUniqueId = findViewById(R.id.etUniqueId)
+      etUsername = findViewById(R.id.etusername)
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnNext)
 
@@ -31,18 +32,19 @@ class LoginPage : AppCompatActivity() {
         }
     }
 //
+
     private fun loginUser() {
-        val uniqueId = etUniqueId.text.toString().trim()
+        val username = etUsername.text.toString().trim()
         val password = etPassword.text.toString().trim()
 
-        if (uniqueId.isEmpty() || password.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Fill all fields", Toast.LENGTH_SHORT).show()
             return
         }
 
         // 🔍 Step 1: Find email using Unique ID
         db.collection("users")
-            .whereEqualTo("uniqueId", uniqueId)
+            .whereEqualTo("username", username)
             .get()
             .addOnSuccessListener { query ->
                 if (query.isEmpty) {
@@ -61,7 +63,8 @@ class LoginPage : AppCompatActivity() {
                         finish()
                     }
                     .addOnFailureListener {
-                        Toast.makeText(this, "Wrong password", Toast.LENGTH_SHORT).show()
+                        Log.e("AUTH_ERROR",it.message ?: "error")
+                        Toast.makeText(this, "Wrong Credentials", Toast.LENGTH_SHORT).show()
                     }
             }
             .addOnFailureListener {

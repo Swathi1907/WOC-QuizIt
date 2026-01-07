@@ -1,5 +1,5 @@
 object PromptBuilder {
-//
+
     fun buildPrompt(
         content: String,
         count: Int,
@@ -8,53 +8,57 @@ object PromptBuilder {
         return """
 You are an AI quiz generator.
 
-Your task is to generate a quiz STRICTLY based on the provided study material.
+Generate a quiz STRICTLY based on the study material below.
 
 STUDY MATERIAL:
 $content
 
 QUIZ SETTINGS:
 - Number of questions: $count
-- Difficulty level: $difficulty
+- Difficulty: $difficulty
 
 DIFFICULTY RULES:
-- Easy: Direct factual questions, simple concepts
-- Medium: Concept-based, requires understanding
-- Hard: Analytical, tricky, multi-step reasoning
+- Easy: Direct factual questions
+- Medium: Concept-based questions
+- Hard: Analytical and tricky questions
 
-OUTPUT RULES (VERY IMPORTANT):
-- Return ONLY valid raw JSON
-- DO NOT add explanations outside JSON
-- DO NOT wrap JSON in ```json
-- DO NOT include any extra text
-- JSON must be parseable
+OUTPUT RULES (MANDATORY):
+- Output ONLY valid raw JSON
+- No extra text before or after JSON
+- No markdown
+- JSON must be parsable
 
-JSON FORMAT (DO NOT CHANGE KEYS):
+IMPORTANT FORMAT RULES:
+- Options must NOT contain A., B., C., D.
+- Options must be plain text only
+- correctAnswer must EXACTLY match one option text
+- explanation must be one single line
+
+JSON FORMAT:
 {
   "questions": [
     {
       "number": 1,
       "question": "Question text",
       "options": [
-        "Option A",
-        "Option B",
-        "Option C",
-        "Option D"
+        "Option 1",
+        "Option 2",
+        "Option 3",
+        "Option 4"
       ],
-      "correctAnswer": "A",
-      "explanation": "Single line explanation"
+      "correctAnswer": "Option 2",
+      "explanation": "Short explanation"
     }
   ]
 }
 
 STRICT RULES:
 - Generate EXACTLY $count questions
-- Each question MUST have exactly 4 options
-- correctAnswer MUST be one of: A, B, C, D
-- explanation MUST be ONE LINE
-- Questions MUST be derived ONLY from the study material
+- Exactly 4 options per question
+- correctAnswer must match one option exactly
 - No repeated questions
-- Maintain the chosen difficulty level strictly
+- Follow difficulty strictly
+- Use ONLY the study material
 
 Now generate the quiz.
 """.trimIndent()

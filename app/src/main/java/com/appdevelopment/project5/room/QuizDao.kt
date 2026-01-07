@@ -10,7 +10,7 @@ import androidx.room.SkipQueryVerification
 @Dao
 interface QuizDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     fun insertQuestions(
         questions: List<QuizQuestionEntity>
     )
@@ -23,13 +23,13 @@ interface QuizDao {
     """
     )
     fun getQuestionsForQuiz(
-        quizId: Long,
-        userId: String
+        quizId :Long,
+        userId :String
     ): List<QuizQuestionEntity>
 
-@Query("SELECT * FROM Quiz_Results ORDER BY timestamp ASC")
-fun getAllResults(): List<QuizResultEntity>
+@Query("SELECT * FROM Quiz_Results WHERE userId = :userId  ORDER BY timestamp ASC")
+fun getAllResults(userId: String): List<QuizResultEntity>
 
-@Query("DELETE FROM QuizQuestionEntity")
+@Query("DELETE FROM QuizQuestionEntity ")
 fun clearAllQuestions()
 }

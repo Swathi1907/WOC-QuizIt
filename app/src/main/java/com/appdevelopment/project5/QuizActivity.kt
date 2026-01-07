@@ -2,7 +2,10 @@ package com.appdevelopment.project5
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -25,6 +28,11 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var btnSubmit: Button
     private lateinit var tvTitle: TextView
 
+private lateinit var tvtimer: TextView
+private var countDownTimer: CountDownTimer? = null
+
+    private var timeLimitMillis: Long = 0L
+
     private var quizId: Long = 0L
     private lateinit var adapter: QuestionPagerAdapter
     private var questions: List<QuizQuestionEntity> = emptyList()
@@ -33,7 +41,12 @@ class QuizActivity : AppCompatActivity() {
         Toast.makeText(this,"QuizActivity opened",Toast.LENGTH_SHORT).show()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
+        tvtimer = findViewById(R.id.tvTimer)
 
+        val timeLimitMinutes = intent.getIntExtra("TIME_LIMIT", 5)
+        timeLimitMillis = timeLimitMinutes * 60 * 1000L
+Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
+        startTimer()
         // findViewById for all views
         viewPager = findViewById(R.id.viewPagerQuestions)
         btnBefore = findViewById(R.id.btnBefore)
@@ -82,10 +95,12 @@ class QuizActivity : AppCompatActivity() {
             btnSubmit.setOnClickListener {
                 val score = adapter.calculateScore()
 lifecycleScope.launch(Dispatchers.IO) {
+    val userId = FirebaseAuth.getInstance().currentUser!!.uid
     val result = QuizResultEntity(
         quizId = quizId,
         score = score,
-        totalQuestions = adapter.itemCount
+        totalQuestions = adapter.itemCount,
+        userId = userId
     )
     AppDatabase.getDatabase(this@QuizActivity)
         .quizResultDao()
@@ -104,7 +119,7 @@ lifecycleScope.launch(Dispatchers.IO) {
                         startActivity(intent)
                     }
                     .show()
-
+countDownTimer?.cancel()
                 // Disable buttons immediately
                 btnSubmit.isEnabled = false
                 btnNext.isEnabled = false
@@ -115,6 +130,62 @@ lifecycleScope.launch(Dispatchers.IO) {
     }
 //
     // helper to load questions from Room on IO dispatcher
+private fun startTimer() {
+    countDownTimer = object : CountDownTimer(timeLimitMillis, 1000) {
+
+        override fun onTick(millisUntilFinished: Long) {
+            val minutes = (millisUntilFinished / 1000) / 60
+            val seconds = (millisUntilFinished / 1000) % 60
+            tvtimer.text = String.format(
+                "Time Left: %02d:%02d",
+                minutes,
+                seconds
+            )
+        }
+
+        override fun onFinish() {
+            tvtimer.text = "Time Over!"
+            submitQuizAutomatically()
+        }
+    }.start()
+}
+    private fun submitQuizAutomatically() {
+        val score = adapter.calculateScore()
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+            val result = QuizResultEntity(
+                quizId = quizId,
+                score = score,
+                totalQuestions = adapter.itemCount,
+                userId = userId
+            )
+            AppDatabase.getDatabase(this@QuizActivity)
+                .quizResultDao()
+                .insertResult(result)
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle("Time Up!")
+            .setMessage("Your score: $score / ${adapter.itemCount}")
+            .setCancelable(false)
+            .setPositiveButton("OK") { _, _ ->
+                startActivity(
+                    Intent(this, HomeActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                )
+                finish()
+            }
+            .show()
+
+        disableButtons()
+    }
+    private fun disableButtons(){
+        btnSubmit.isEnabled = false
+        btnNext.isEnabled = false
+        btnBefore.isEnabled = false
+    }
+
     private suspend fun loadQuestionsFromDB(id: Long): List<QuizQuestionEntity> {
         return withContext(Dispatchers.IO) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid

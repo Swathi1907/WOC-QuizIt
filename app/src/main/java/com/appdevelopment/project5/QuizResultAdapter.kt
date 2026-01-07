@@ -19,7 +19,7 @@ class QuizResultAdapter(
 
     // view holder holds the views like textview,buttons etc and onbindview holder connects the adapter and the view holder
     class QuizResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+//
         val tvScore: TextView = itemView.findViewById(R.id.tvScore)
         val tvTotal: TextView = itemView.findViewById(R.id.tvTotal)
         val tvDate: TextView = itemView.findViewById(R.id.tvDate)

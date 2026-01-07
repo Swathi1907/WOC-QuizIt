@@ -9,6 +9,7 @@
     android:layout_marginBottom="8dp"
     android:background="#EEEEEE">
 
+
     <TextView
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"

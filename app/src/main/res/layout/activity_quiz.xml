@@ -13,12 +13,22 @@
         android:layout_height="wrap_content"
         android:text="Quiz"
         android:textSize="22sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="12dp"
         android:layout_marginTop="40dp"
         />
-//
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Left: 00:00"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_marginBottom="8dp"/>
+
     <!-- ViewPager2 to display each question page -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerQuestions"
@@ -40,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Previous"
+            android:textColor="#FFFFFF"
             android:backgroundTint="#039BE5"/>
 
         <Button
@@ -48,6 +59,7 @@
             android:layout_height="wrap_content"
             android:text="Next"
             android:backgroundTint="#039BE5"
+            android:textColor="#FFFFFF"
             android:layout_marginStart="16dp" />
     </LinearLayout>
 
@@ -57,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit Quiz"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="30dp"
         android:backgroundTint="#039BE5"
         android:layout_marginBottom="30dp"/>

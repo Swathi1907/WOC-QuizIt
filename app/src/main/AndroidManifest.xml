@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
+//
     <application
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
@@ -32,6 +32,7 @@
         <activity android:name=".QuizActivity"/>
             <activity android:name=".LoginPage"/>
         <activity android:name=".QuizSetUpActivity"/>
+        <activity android:name=".PerformanceActivity"/>
                 <activity android:name=".QuizReviewActivity"/>
 
     </application>

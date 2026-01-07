@@ -8,11 +8,11 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Create Quiz"
+        android:text="Create a Quiz"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="74dp"
         android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -21,10 +21,31 @@
         android:id="@+id/etQuestionCount"
         android:hint="Number of questions"
         android:inputType="number"
+        android:textColorHint="#999"
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+
+
+    <EditText
+        android:id="@+id/ettimer"
+        android:hint="Time in minutes"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:textColorHint="#999"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="125dp"
+        android:text="Select Difficulty"
+        android:textColor="@color/black" />
     <Spinner
         android:id="@+id/spDifficulty"
         android:layout_marginTop="16dp"
@@ -36,9 +57,12 @@
 
     <Button
         android:id="@+id/btnNext2"
-        android:text="Next"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#1E88E5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="Next"
+        android:textColor="#FFFFFF" />
+
 </LinearLayout>

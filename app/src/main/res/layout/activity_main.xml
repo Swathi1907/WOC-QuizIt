@@ -36,7 +36,7 @@ android:id="@+id/main"
             android:orientation="vertical">
 
             <TextView
-                android:text="Upload PDF"
+                android:text="Upload PDF(Atmost 5 pages)"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#222222"
@@ -104,6 +104,7 @@ android:id="@+id/main"
             android:layout_height="wrap_content"
             android:text="Generate AI Quiz"
             android:backgroundTint="#039BE5"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             app:layout_constraintBottom_toBottomOf="@id/tvOutput"/>
@@ -122,6 +123,7 @@ android:id="@+id/main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Show Extracted Text"
+                android:textColor="#FFFFFF"
                 android:backgroundTint="#039BE5"/>
 
             <TextView
@@ -129,6 +131,7 @@ android:id="@+id/main"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Extracted Text"
+
                 android:textColor="#222222"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -141,15 +144,15 @@ android:id="@+id/main"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:background="@drawable/input_field"
-                android:padding="12dp"
                 android:hint="Extracted content will appear here"
+                android:padding="12dp"
                 android:textColor="#555555" />
 
-          <!--  <Button
-                android:id="@+id/backbutton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Back" />-->
+            <!--  <Button
+                  android:id="@+id/backbutton"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Back" />-->
 
 
         </LinearLayout>

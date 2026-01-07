@@ -12,6 +12,7 @@ class ReviewAdapter(
 ) : RecyclerView.Adapter<ReviewAdapter.ReviewVH>() {
 
     class ReviewVH(view: View) : RecyclerView.ViewHolder(view) {
+      val qNumber: TextView =view.findViewById(R.id.tvQuestionNumber)
         val q: TextView = view.findViewById(R.id.tvQuestion)
         val a: TextView = view.findViewById(R.id.tvA)
         val b: TextView = view.findViewById(R.id.tvB)
@@ -28,7 +29,7 @@ class ReviewAdapter(
 
     override fun onBindViewHolder(h: ReviewVH, pos: Int) {
         val q = questions[pos]
-
+h.qNumber.text = "Question ${q.number}"
         h.q.text = q.question
         h.a.text = "A) ${q.optionA}"
         h.b.text = "B) ${q.optionB}"

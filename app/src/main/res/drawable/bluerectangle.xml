@@ -4,6 +4,7 @@
     android:shape="rectangle"
     tools:ignore="ExtraText">
     <stroke
+
         android:color="@color/black"
         android:width="2dp"/>
     <solid android:color="#00ACC1"/>

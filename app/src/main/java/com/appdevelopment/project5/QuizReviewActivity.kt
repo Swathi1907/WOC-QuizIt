@@ -1,6 +1,7 @@
 package com.appdevelopment.project5
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -36,7 +37,8 @@ val rv = findViewById<RecyclerView>(R.id.rvReview)
                 AppDatabase.getDatabase(this@QuizReviewActivity)
                     .quizDao()
                     .getQuestionsForQuiz(quizId = quizId, userId = userId)
-
+            Log.d("REVIEW", "quizId = $quizId")
+            Log.d("REVIEW", "questions size = ${questions.size}")
             withContext(Dispatchers.Main) {
                 rv.adapter =
                     ReviewAdapter(questions)

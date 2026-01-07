@@ -19,64 +19,99 @@ class SignUpActivity: AppCompatActivity() {
         val auth = FirebaseAuth.getInstance()
         val db = FirebaseFirestore.getInstance()
         val etusername = findViewById<EditText>(R.id.etUsername)
-        val etuniqueId = findViewById<EditText>(R.id.etUniqueId)
+       // val etuniqueId = findViewById<EditText>(R.id.etUniqueId)
         val etemail = findViewById<EditText>(R.id.etEmail)
         val etpassword = findViewById<EditText>(R.id.etPassword)
         val btnNext = findViewById<Button>(R.id.btnNext)
 
         btnNext.setOnClickListener {
-            val uniqueId = etuniqueId.text.toString().trim()
+
+         //   val uniqueId = etuniqueId.text.toString().trim()
             val username = etusername.text.toString().trim()
             val email = etemail.text.toString().trim()
             val password = etpassword.text.toString().trim()
-            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || uniqueId.isEmpty()) {
+
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty() ) {
                 Toast.makeText(this, "Fill All Fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            auth.createUserWithEmailAndPassword(email, password)
+            db.collection("users")
+                .whereEqualTo("username", username)
+                .get()
                 .addOnSuccessListener {
-                    saveUserProfileAndGo(username, uniqueId, email)
-                }
-                .addOnFailureListener { e ->
-
-                    if (e is FirebaseAuthUserCollisionException) {
-
-                        auth.signInWithEmailAndPassword(email, password)
-                            .addOnSuccessListener {
-                                saveUserProfileAndGo(username, uniqueId, email)
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(this, "Wrong password", Toast.LENGTH_SHORT).show()
-                            }
-
-                    } else {
-                        Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                    if (!it.isEmpty) {
+                        Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show()
+                        return@addOnSuccessListener
                     }
-                }
+                    // continue signup
+
+                    createUser(username,email,password)
 //
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Error in checking Unique Id", Toast.LENGTH_SHORT).show()
+                }
 
         }
+
     }
     private fun saveUserProfileAndGo(
         username: String,
-        uniqueId: String,
+       // uniqueId: String,
         email: String
     ) {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
-
-        val userMap = hashMapOf(
-            "username" to username,
-            "email" to email,
-            "uniqueId" to uniqueId
-        )
-
-        FirebaseFirestore.getInstance()
-            .collection("users")
-            .document(uid)
-            .set(userMap, SetOptions.merge()) // overwrite safely
+        val user = FirebaseAuth.getInstance().currentUser?: return
+val uid = user.uid
+        val profileUpdates = com.google.firebase.auth.userProfileChangeRequest {
+            displayName = username
+        }
+        user.updateProfile(profileUpdates)
             .addOnSuccessListener {
-                startActivity(Intent(this, ProfileActivity::class.java))
-                finish()
+                val userMap = hashMapOf(
+                    "username" to username,
+                    "email" to email,
+                 //   "uniqueId" to uniqueId
+                )
+
+                FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(uid)
+                    .set(userMap, SetOptions.merge()) // overwrite safely
+                    .addOnSuccessListener {
+                        startActivity(Intent(this, ProfileActivity::class.java))
+                        finish()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Profile update failed", Toast.LENGTH_SHORT).show()
+                    }
+            }
+    }
+    private fun createUser(
+        username: String,
+       // uniqueId: String,
+        email: String,
+        password: String
+    ){
+        val auth = FirebaseAuth.getInstance()
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnSuccessListener {
+                saveUserProfileAndGo(username,  email)
+            }
+            .addOnFailureListener { e ->
+
+                if (e is FirebaseAuthUserCollisionException) {
+Toast.makeText(this,"Email already exists",Toast.LENGTH_SHORT).show()
+                 //   auth.signInWithEmailAndPassword(email, password)
+                   //     .addOnSuccessListener {
+                     //       saveUserProfileAndGo(username,  email)
+                       // }
+                        //.addOnFailureListener {
+                          //  Toast.makeText(this, "Wrong password", Toast.LENGTH_SHORT).show()
+                        }
+
+                 else {
+                    Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                }
             }
     }
 

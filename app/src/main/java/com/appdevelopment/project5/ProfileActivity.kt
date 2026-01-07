@@ -22,30 +22,16 @@ class ProfileActivity : AppCompatActivity() {
 
         val tvUsername = findViewById<TextView>(R.id.tvUsername)
         val tvEmailid = findViewById<TextView>(R.id.tvEmailid)
-val UniqueId = findViewById<TextView>(R.id.tvUniqueId)
-        val btnSignOut = findViewById<Button>(R.id.btnSignOut)
+//val UniqueId = findViewById<TextView>(R.id.tvUniqueId)
+        val btnlogOut = findViewById<Button>(R.id.btnlogOut)
 //
-        btnSignOut.setOnClickListener {
-
-            lifecycleScope.launch {
-
-                // 1️⃣ Clear Room database
-                withContext(Dispatchers.IO) {
-                    val db = AppDatabase.getDatabase(this@ProfileActivity)
-                    db.quizDao().clearAllQuestions()
-                    db.quizResultDao().clearAllResults()
-                }
-
-                // 2️⃣ Firebase sign out
-                FirebaseAuth.getInstance().signOut()
-
-                // 3️⃣ Navigate to first page
-                val intent = Intent(this@ProfileActivity, FirstPageActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-                finish()
-            }
-        }
+        btnlogOut.setOnClickListener {
+FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginPage::class.java)
+      intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+              Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+       }
        // val uid = FirebaseAuth.getInstance().currentUser!!.uid
 val auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
@@ -64,17 +50,17 @@ val auth = FirebaseAuth.getInstance()
             .addOnSuccessListener { doc->
                 if(doc.exists()){
                     tvUsername.text = doc.getString("username")
-                    UniqueId.text = doc.getString("uniqueId")
+                  //  UniqueId.text = doc.getString("uniqueId")
                 }
                else {
                    tvUsername.text = "user"
-                    UniqueId.text = "Not Set"
+                 //   UniqueId.text = "Not Set"
                 }
 
             }
             .addOnFailureListener {
                 tvUsername.text = "Error loading"
-                UniqueId.text = ""
+              //  UniqueId.text = ""
             }
     }
 }

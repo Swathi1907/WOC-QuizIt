@@ -45,12 +45,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnGenerateAI: Button
     private lateinit var tvOutput: TextView
     private var selectedCount =0
+
+    private var  timeinminutes= 0
+
     private var selectedDifficulty = ""
 private var extractedText: String=""
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
-        Toast.makeText(this,"MainActivity opened",Toast.LENGTH_SHORT).show()
+      //  Toast.makeText(this,"MainActivity opened",Toast.LENGTH_SHORT).show()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 Log.d("KEY_TEST","Gemini key = ${GeminiConfig.API_KEY}")
@@ -61,11 +64,15 @@ Log.d("KEY_TEST","Gemini key = ${GeminiConfig.API_KEY}")
         val btnExtractedText = findViewById<Button>(R.id.btnExtractedText)
         tvOutput = findViewById(R.id.tvOutput)
          btnGenerateAI = findViewById(R.id.btnGenerateAI)
-selectedCount = intent.getIntExtra("count", 5)
+selectedCount = intent.getIntExtra("count", -1)
         selectedDifficulty = intent.getStringExtra("difficulty")?:"medium"
-        Log.d("QuizSetUpActivity","count=$selectedCount , difficulty=$selectedDifficulty")
-
+timeinminutes = intent.getIntExtra("TIME_LIMIT",5)
+        if (selectedCount <= 0) {
+            Toast.makeText(this, "Invalid question count", Toast.LENGTH_SHORT).show()
+            return
+        }
         btnGenerateAI.setOnClickListener {
+            Log.d("QuizSetUpActivity","count=$selectedCount , difficulty=$selectedDifficulty")
          val content= extractedText.trim()
             if(content.isBlank()){
                 Toast.makeText(this@MainActivity,"Content Is Empty", Toast.LENGTH_SHORT).show()
@@ -134,7 +141,7 @@ btnExtractedText.setOnClickListener {
                 lifecycleScope.launch(Dispatchers.IO) {
 
                     val result = try {
-                        renderFirstPageAndRecognize(uri)
+                        renderLimitedPagesAndRecognize(uri)
                     } catch (e: Exception) {
                         e.printStackTrace()
                         "Error: ${e.message}"
@@ -161,33 +168,65 @@ btnExtractedText.setOnClickListener {
     }
 
     // Render first page and run ML Kit OCR (suspending)
-    private suspend fun renderFirstPageAndRecognize(uri: Uri): String {
+    private suspend fun renderLimitedPagesAndRecognize(uri: Uri): String {
         val tmp = copyUriToTempFile(uri)
         var pfd: ParcelFileDescriptor? = null
         var renderer: PdfRenderer? = null
+
+        val finalText = StringBuilder()
+        val MAX_PAGES = 6   // /////////// max pages will get extracted
+
         try {
             pfd = ParcelFileDescriptor.open(tmp, ParcelFileDescriptor.MODE_READ_ONLY)
             renderer = PdfRenderer(pfd)
-            if (renderer.pageCount == 0) return "PDF has no pages."
 
-            val page = renderer.openPage(0)
+            val totalPages = renderer.pageCount
+            if (totalPages == 0) return "PDF has no pages."
 
-            // scale up for better OCR accuracy (adjust if OOM)
-            val width = page.width * 2
-            val height = page.height * 2
-            val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-            bitmap.eraseColor(Color.WHITE) // white background helps OCR
+            val pagesToProcess = minOf(totalPages, MAX_PAGES)
 
-            page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
-            page.close()
+            Log.d("PDF_OCR", "Total pages in PDF = $totalPages")
+            Log.d("PDF_OCR", "Extracting $pagesToProcess pages")
 
-            val image = InputImage.fromBitmap(bitmap, 0)
-            val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+            val recognizer = TextRecognition.getClient(
+                TextRecognizerOptions.DEFAULT_OPTIONS
+            )
 
-            // await ML Kit result
-            val extractedText = runTextRecognition(recognizer,bitmap )
-            bitmap.recycle()
-            return extractedText.take(8_000).ifBlank { "No text found on first page." }
+            for (i in 0 until pagesToProcess) {
+                Log.d("PDF_OCR", "Processing page ${i + 1}/$pagesToProcess")
+
+                val page = renderer.openPage(i)
+
+                val width = page.width * 2
+                val height = page.height * 2
+                val bitmap = Bitmap.createBitmap(
+                    width,
+                    height,
+                    Bitmap.Config.ARGB_8888
+                )
+                bitmap.eraseColor(Color.WHITE)
+
+                page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+                page.close()
+
+                val pageText = runTextRecognition(recognizer, bitmap)
+                bitmap.recycle()
+
+                if (pageText.isNotBlank()) {
+                    finalText.append("\n\n--- Page ${i + 1} ---\n")
+                    finalText.append(pageText)
+                }
+
+                Log.d("PDF_OCR", "Finished page ${i + 1}")
+            }
+
+            Log.d("PDF_OCR", "OCR completed. Pages extracted = $pagesToProcess")
+
+            return finalText
+                .toString()
+                .take(8_000)
+                .ifBlank { "No text found in extracted pages." }
+
         } finally {
             try { renderer?.close() } catch (_: Exception) {}
             try { pfd?.close() } catch (_: Exception) {}
@@ -234,7 +273,7 @@ btnExtractedText.setOnClickListener {
                         )
                     ),
                     generationConfig = GenerationConfig(
-                        maxOutputTokens = 1200
+                        maxOutputTokens = 3000
 
                     )
                 )
@@ -260,7 +299,12 @@ Log.d("GEMINI_RAW",response.body().toString())
                     ?.text ?: ""
 
                 Log.d("RAW_GEMINI", rawText)
-
+                Log.d("RAW_LEN", "Length = ${rawText.length}")
+                if (!rawText.trim().endsWith("}")) {
+                    tvOutput.text = "AI response incomplete. Try again."
+                    Log.e("GEMINI_INCOMPLETE", rawText)
+                    return@launch
+                }
 // Parse JSON
                 val parsed =
                     JsonQuizParser.parse(rawText)
@@ -275,7 +319,17 @@ Log.d("GEMINI_RAW",response.body().toString())
 //  Save to Room
                 val quizId = System.currentTimeMillis()
 //
-                val entities = parsed.mapIndexed { index, q ->
+
+               val entities = parsed.mapIndexed { index, q ->
+                   val correctOption = when(q.correctAnswer.trim()) {
+
+                       q.options[0].trim() -> "A"
+                       q.options[1].trim() -> "B"
+                       q.options[2].trim() -> "C"
+                       q.options[3].trim() -> "D"
+
+                       else -> ""
+                   }
                     QuizQuestionEntity(
                         userId = userId,
                         quizId = quizId,
@@ -285,10 +339,14 @@ Log.d("GEMINI_RAW",response.body().toString())
                         optionB = q.options[1],
                         optionC = q.options[2],
                         optionD = q.options[3],
-                        correctAnswer = q.correctAnswer,
+                        correctAnswer = correctOption,
                         explanation = q.explanation,
-                        correctOption = q.correctAnswer
+                       selectedOption = null
                     )
+               }
+                Log.d("ROOM_DEBUG", "Questions to insert = ${entities.size}")
+                entities.forEach {
+                    Log.d("ROOM_DEBUG", "Q number=${it.number}, quizId=${it.quizId}")
                 }
 
                 withContext(Dispatchers.IO) {
@@ -301,6 +359,7 @@ Log.d("GEMINI_RAW",response.body().toString())
                 startActivity(
                     Intent(this@MainActivity, QuizActivity::class.java)
                         .putExtra("QUIZ_ID", quizId)
+                        .putExtra("TIME_LIMIT",timeinminutes)
                 )
 
 
@@ -323,7 +382,7 @@ Log.d("GEMINI_RAW",response.body().toString())
                                 .get()
                             val extracted = doc.body().text()
 
-                            val safeText = extracted.take(2000)
+                            val safeText = extracted.take(1200)
                             withContext(Dispatchers.Main) {
 
                           extractedText = safeText

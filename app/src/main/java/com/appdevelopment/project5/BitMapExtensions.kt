@@ -15,7 +15,7 @@ suspend fun Bitmap.extractText(): String =
     withContext(Dispatchers.Default) {
         try {
             val image = InputImage.fromBitmap(this@extractText, 0)
-
+//
             val recognizer = TextRecognition.getClient(
                 TextRecognizerOptions.DEFAULT_OPTIONS
             )

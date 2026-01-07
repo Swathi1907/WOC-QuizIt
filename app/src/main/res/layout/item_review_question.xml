@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="10dp"
@@ -6,8 +7,14 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tvQuestionNumber"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+    <TextView
         android:id="@+id/tvQuestion"
-        android:layout_width="399dp"
+        android:layout_width="wrap_content"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:textStyle="bold" />
@@ -15,30 +22,30 @@
     <TextView
         android:id="@+id/tvA"
         android:textColor="@color/black"
-        android:layout_width="401dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/tvB"
-        android:layout_width="401dp"
+        android:layout_width="wrap_content"
         android:textColor="@color/black"
 
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvC"
-        android:layout_width="401dp"
+        android:layout_width="wrap_content"
         android:textColor="@color/black"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvD"
-        android:layout_width="401dp"
+        android:layout_width="wrap_content"
         android:textColor="@color/black"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvCorrect"
-        android:layout_width="401dp"
+        android:layout_width="wrap_content"
 
         android:textColor="@color/black"
         android:layout_height="wrap_content"
@@ -46,7 +53,7 @@
 
     <TextView
         android:id="@+id/tvExplanation"
-        android:layout_width="401dp"
+        android:layout_width="wrap_content"
         android:textColor="@color/black"
         android:layout_height="111dp"
         />

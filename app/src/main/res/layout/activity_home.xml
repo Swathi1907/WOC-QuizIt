@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F6FA">
+<LinearLayout
     android:orientation="vertical"
     android:padding="16dp"
     android:background="#F5F6FA"
@@ -22,6 +26,7 @@
             app:srcCompat="@drawable/profile" />
 
         <TextView
+            android:id="@+id/tvgreetings"
 android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -36,14 +41,15 @@ android:layout_width="match_parent"
 
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="365dp"
-        android:layout_height="35dp"
+        android:layout_width="351dp"
+        android:layout_height="29dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/border"
-        android:paddingStart="170dp"
+        android:paddingStart="150dp"
         android:paddingTop="5dp"
         android:text="QUIZIT"
         android:textColor="@color/white"
@@ -57,88 +63,121 @@ android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:paddingStart="20dp"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:text="DASHBOARD" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
+        <!--  <Button
             android:id="@+id/btnAttemptedQuizzes"
-            android:layout_width="175dp"
-            android:layout_height="match_parent"
-            app:backgroundTint="#00ACC1"
+            android:layout_width="379dp"
+            android:layout_height="100dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bluerectangle"
-android:textSize="20dp"
             android:text="Past Quizzes"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+
             android:textStyle="bold"
+            app:backgroundTint="#00ACC1"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="374dp" />
+-->
+        <Button
+            android:id="@+id/btnCreateQuiz"
+            android:layout_width="350dp"
+            android:layout_height="121dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape1"
+            android:text=" NewQuiz"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:paddingStart="20dp"
+            android:textStyle="bold"
+            app:backgroundTint="#00ACC1"
+            tools:layout_editor_absoluteX="215dp"
+            tools:layout_editor_absoluteY="376dp" />
+
+
+        <!--  <Button
+              android:id="@+id/button7"
+              android:layout_width="174dp"
+              android:layout_height="195dp"
+              android:layout_marginLeft="10dp"
+              android:layout_marginTop="15dp"
+              android:layout_marginRight="0dp"
+              android:layout_marginBottom="20sp"
+              android:background="@drawable/bluerectangle"
+              android:text="Compete"
+              android:textSize="20dp"
+              android:textStyle="bold"
+              app:backgroundTint="#00ACC1"
+              android:textColor="@color/white"
+              tools:layout_editor_absoluteX="219dp"
+              tools:layout_editor_absoluteY="519dp" />
+  -->
+        <Button
+            android:id="@+id/btnAttemptedQuizzes"
+            android:layout_width="350dp"
+            android:layout_height="123dp"
+            android:paddingStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape1"
+            android:text="Past Quizzes"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+
+            android:textStyle="bold"
+            app:backgroundTint="#00ACC1"
             tools:layout_editor_absoluteX="25dp"
             tools:layout_editor_absoluteY="374dp" />
 
         <Button
-            android:id="@+id/btnCreateQuiz"
-            android:layout_width="171dp"
-            android:layout_height="182dp"
-            app:backgroundTint="#00ACC1"
-            android:background="@drawable/bluerectangle"
-            android:textSize="20dp"
-            android:text=" NewQuiz"
-            android:textStyle="bold"
-
-            tools:layout_editor_absoluteX="215dp"
-            tools:layout_editor_absoluteY="376dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="174dp"
-            android:layout_height="195dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="20sp"
-            android:background="@drawable/bluerectangle"
-            android:text="Compete"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:backgroundTint="#00ACC1"
-            tools:layout_editor_absoluteX="219dp"
-            tools:layout_editor_absoluteY="519dp" />
-
-        <Button
             android:id="@+id/btnPerformances"
-            android:layout_width="174dp"
-            android:layout_height="195dp"
+            android:layout_width="350dp"
+            android:layout_height="122dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/bluerectangle"
+            android:background="@drawable/shape1"
             android:text="My Performances"
+            android:textColor="@color/white"
             android:textSize="19dp"
             android:textStyle="bold"
             app:backgroundTint="#00ACC1"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="522dp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="100dp"
+            android:text="Past quizzes will appear here"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <include
     android:id="@+id/pastQuizLayout"
     layout="@layout/pastquizzzes"/>
 
-
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
 
 </LinearLayout>
+</ScrollView>

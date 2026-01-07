@@ -3,11 +3,11 @@ package com.appdevelopment.project5.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
+var selectedOption: String? = null
 @Entity()
 data class QuizQuestionEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L,
+@PrimaryKey(autoGenerate = true)
+val id: Long = 0L,
     val userId: String,
     val quizId: Long,
     val number: Int,
@@ -18,7 +18,7 @@ data class QuizQuestionEntity(
     val optionD: String,
     val correctAnswer: String,
     val explanation: String,
-    val correctOption: String,
-    var selectedOption: Int = -1
+   // val correctOption: String,
+    var selectedOption: String?= null
 )
 //
