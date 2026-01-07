@@ -10,6 +10,7 @@ android {
     namespace = "com.appdevelopment.project5"
     compileSdk = 36   // ✅ keep stable
 
+
     defaultConfig {
         applicationId = "com.appdevelopment.project5"
         minSdk = 24
