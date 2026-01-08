@@ -38,7 +38,7 @@ private var countDownTimer: CountDownTimer? = null
     private var questions: List<QuizQuestionEntity> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Toast.makeText(this,"QuizActivity opened",Toast.LENGTH_SHORT).show()
+      //  Toast.makeText(this,"QuizActivity opened",Toast.LENGTH_SHORT).show()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
         tvtimer = findViewById(R.id.tvTimer)

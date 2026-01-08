@@ -117,7 +117,7 @@ private fun setupChart(
 // Y-axis configuration (GRAPH HEIGHT)
     chart.axisLeft.apply {
         axisMinimum = 0f
-        axisMaximum = (maxScore + 7).toFloat()   // 👈 MAX HEIGHT HERE
+        axisMaximum = (maxScore + 7).toFloat()   ///////// MAX HEIGHT HERE
         granularity = 1f
         isGranularityEnabled = true
         valueFormatter = object : ValueFormatter() {

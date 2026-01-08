@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/image"
+        android:src="@drawable/image2"
         android:scaleType="centerCrop" />
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,9 +26,9 @@
         android:layout_height="37dp"
         android:layout_marginTop="270dp"
         android:layout_marginBottom="40dp"
-        android:paddingStart="90dp"
-        android:text="Welcome Back "
-        android:textColor="@color/white"
+        android:paddingStart="60dp"
+        android:text="Good to see you again! "
+        android:textColor="?attr/colorOnPrimaryFixed"
         android:textSize="25sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="55dp"

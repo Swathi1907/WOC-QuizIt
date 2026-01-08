@@ -8,10 +8,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/image"
+        android:src="@drawable/image2"
         android:scaleType="centerCrop" />
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
@@ -21,24 +20,25 @@
 
     <TextView
         android:id="@+id/textView4"
+        android:layout_width="385dp"
+        android:layout_height="41dp"
         android:layout_marginTop="230dp"
-        android:layout_width="300dp"
         android:layout_marginBottom="10dp"
-        android:layout_height="37dp"
-        android:text="Quiz Your Way to Fun... "
-        android:textColor="@color/white"
-        android:textSize="25sp"
+        android:text ="You've studied enough,now try a quiz"
+        android:textColor="?attr/colorOnPrimaryFixed"
+        android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="55dp"
         tools:layout_editor_absoluteY="164dp" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="100dp"
         android:layout_marginBottom="10dp"
+        android:paddingStart="100dp"
         android:text="Quiz Smarter, Not Harder"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnPrimaryFixed"
         android:textSize="20sp"
         android:textStyle="bold|italic"
 

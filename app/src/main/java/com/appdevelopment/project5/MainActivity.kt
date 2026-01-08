@@ -81,7 +81,7 @@ timeinminutes = intent.getIntExtra("TIME_LIMIT",5)
 val safeContent = content.take(2000)
             //Temporary: Ask for 3 questions
            val prompt = PromptBuilder.buildPrompt(content = safeContent, count = selectedCount, difficulty = selectedDifficulty)
-
+            Toast.makeText(this,"Please wait while we process your request...",Toast.LENGTH_LONG).show()
             callGeminiDirect(prompt)
         }
 
@@ -136,7 +136,7 @@ btnExtractedText.setOnClickListener {
                 } catch (_: Exception) { /* ignore */
                 }
 
-                tvOutput.text = "Processing first page (OCR)..."
+                tvOutput.text = "Extracting content in the PDF"
                 // run extraction in background
                 lifecycleScope.launch(Dispatchers.IO) {
 
@@ -149,7 +149,7 @@ btnExtractedText.setOnClickListener {
                     withContext(Dispatchers.Main) {
                         extractedText = result
                         Toast.makeText(this@MainActivity,"PDF Text Extracted", Toast.LENGTH_SHORT).show()
-
+tvOutput.text = "Extracted text will appear here"
                     }
                 }
             } else {

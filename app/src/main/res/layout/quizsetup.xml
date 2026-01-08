@@ -42,8 +42,9 @@
 
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:paddingStart="125dp"
+        android:layout_marginTop="20dp"
+        android:paddingStart="120dp"
+        android:textSize="20dp"
         android:text="Select Difficulty"
         android:textColor="@color/black" />
     <Spinner

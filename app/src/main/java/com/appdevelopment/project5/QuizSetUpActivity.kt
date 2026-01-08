@@ -19,11 +19,23 @@ class QuizSetUpActivity : AppCompatActivity() {
 val ettimer = findViewById<EditText>(R.id.ettimer)
 
         btnNext2.setOnClickListener {
-            val selectedtime = ettimer.text.toString().toInt()
-            val selectedCount = count.text.toString().toInt()
+            val selectedtime = ettimer.text.toString().trim().toIntOrNull()
+            val selectedCount = count.text.toString().trim().toIntOrNull()
             val selectedDifficulty = difficulty.selectedItem.toString()
-            val intent = Intent(this, MainActivity::class.java)
+            if( selectedDifficulty.isEmpty() || selectedtime == null || selectedCount==null ){
+                Toast.makeText(this,"Fill all the Fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if(selectedtime == null || selectedtime<=0){
+                Toast.makeText(this,"Enter a valid time ", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if(selectedCount == null ||selectedCount<=0){
+                Toast.makeText(this,"Enter a valid question count ", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
+            val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("count", selectedCount)
             intent.putExtra("difficulty", selectedDifficulty)
                intent.putExtra("TIME_LIMIT",selectedtime)
