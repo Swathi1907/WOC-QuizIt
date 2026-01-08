@@ -17,7 +17,7 @@
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="12dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         />
     <TextView
         android:id="@+id/tvTimer"
@@ -43,6 +43,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+android:layout_marginBottom="10dp"
         android:layout_marginTop="12dp">
 
         <Button
@@ -66,12 +67,13 @@
     <!-- SUBMIT BUTTON -->
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
+        android:layout_width="289dp"
         android:layout_height="wrap_content"
-        android:text="Submit Quiz"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="40dp"
+
+        android:layout_marginBottom="50dp"
         android:backgroundTint="#039BE5"
-        android:layout_marginBottom="30dp"/>
+        android:text="Submit Quiz"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

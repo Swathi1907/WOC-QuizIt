@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/firstpage"
+        android:src="@drawable/image6"
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -43,7 +43,7 @@
             android:layout_marginBottom="10dp"
             android:padding="0dp"
             android:text="QUIZIT"
-            android:textColor="?attr/colorOnPrimaryFixed"
+            android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
 
@@ -58,9 +58,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="?attr/colorOnPrimaryFixed"
+
             android:text=" Let's walk into experience real"
-            android:textColor="?attr/colorOnPrimaryFixed"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="italic"
             tools:layout_editor_absoluteX="47dp"
@@ -74,7 +74,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginBottom="30dp"
             android:text="           QUIZ challenge"
-            android:textColor="?attr/colorOnPrimaryFixed"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="italic"
             tools:layout_editor_absoluteX="72dp"
@@ -100,7 +100,7 @@
             android:layout_marginLeft="190dp"
             android:layout_marginTop="10dp"
             android:text="It's your time..."
-            android:textColor="?attr/colorOnPrimaryFixed"
+            android:textColor = "@color/black"
             android:textSize="25dp"
             tools:layout_editor_absoluteX="237dp"
             tools:layout_editor_absoluteY="542dp" />

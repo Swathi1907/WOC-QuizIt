@@ -42,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="A) Option A"
+
                 android:textColor="@color/radio_blue_selector"
                 android:buttonTint="@color/radio_blue_selector"/>
 
@@ -50,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="B) Option B"
+
                 android:textColor="@color/radio_blue_selector"
                 android:buttonTint="@color/radio_blue_selector"/>
 
@@ -58,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="C) Option C"
+
                 android:textColor="@color/radio_blue_selector"
                 android:buttonTint="@color/radio_blue_selector"/>
 
@@ -66,6 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="D) Option D"
+
                 android:textColor="@color/radio_blue_selector"
                 android:buttonTint="@color/radio_blue_selector"/>
         </RadioGroup>
