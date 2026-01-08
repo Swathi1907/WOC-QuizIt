@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.appdevelopment.project5.room.QuizResultEntity
 /* the below class connects the quizresults to recycler viewUI
 here quiz results is a list of quizresultentity objects coming from roomdatabase
-it extends recycler view.adapter, which is required to show lists efficiently in android
+it extends recycler view.adapter, which is required to show lists in android
 */
 class QuizResultAdapter(
     private val quizResults: List<QuizResultEntity> ,

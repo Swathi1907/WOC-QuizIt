@@ -73,22 +73,7 @@ android:layout_width="match_parent"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
-        <!--  <Button
-            android:id="@+id/btnAttemptedQuizzes"
-            android:layout_width="379dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bluerectangle"
-            android:text="Past Quizzes"
-            android:textColor="@color/white"
-            android:textSize="20dp"
 
-            android:textStyle="bold"
-            app:backgroundTint="#00ACC1"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="374dp" />
--->
         <Button
             android:id="@+id/btnCreateQuiz"
             android:layout_width="350dp"
@@ -107,23 +92,8 @@ android:layout_width="match_parent"
             tools:layout_editor_absoluteY="376dp" />
 
 
-        <!--  <Button
-              android:id="@+id/button7"
-              android:layout_width="174dp"
-              android:layout_height="195dp"
-              android:layout_marginLeft="10dp"
-              android:layout_marginTop="15dp"
-              android:layout_marginRight="0dp"
-              android:layout_marginBottom="20sp"
-              android:background="@drawable/bluerectangle"
-              android:text="Compete"
-              android:textSize="20dp"
-              android:textStyle="bold"
-              app:backgroundTint="#00ACC1"
-              android:textColor="@color/white"
-              tools:layout_editor_absoluteX="219dp"
-              tools:layout_editor_absoluteY="519dp" />
-  -->
+
+
         <Button
             android:id="@+id/btnAttemptedQuizzes"
             android:layout_width="350dp"

@@ -31,44 +31,7 @@
 
             android:layout_marginBottom="16dp" />
 
-        <!-- OPTIONS GROUP -->
-       <!-- <RadioGroup
-            android:id="@+id/optionsGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/optA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-android:buttonTint="@color/design_default_color_secondary_variant"
-                android:text="A) Option A" />
-
-            <RadioButton
-                android:id="@+id/optB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-
-                android:text="B) Option B" />
-
-            <RadioButton
-                android:id="@+id/optC"
-                android:layout_width="wrap_content"
-
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="C) Option C" />
-
-            <RadioButton
-                android:id="@+id/optD"
-                android:layout_width="wrap_content"
-                android:textColor="@color/black"
-                android:layout_height="wrap_content"
-                android:text="D) Option D" />
-        </RadioGroup>
--->
         <RadioGroup
             android:id="@+id/optionsGroup"
             android:layout_width="match_parent"

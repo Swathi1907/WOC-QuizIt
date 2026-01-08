@@ -36,6 +36,7 @@ val ettimer = findViewById<EditText>(R.id.ettimer)
             }
 
             val intent = Intent(this, MainActivity::class.java)
+
                 intent.putExtra("count", selectedCount)
             intent.putExtra("difficulty", selectedDifficulty)
                intent.putExtra("TIME_LIMIT",selectedtime)

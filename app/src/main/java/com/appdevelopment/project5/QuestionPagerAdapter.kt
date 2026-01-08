@@ -68,7 +68,7 @@ class QuestionPagerAdapter(
         }
     }
 
-    // ✅ MUST BE HERE (CLASS LEVEL)
+    // MUST BE HERE (CLASS LEVEL)
     fun calculateScore(): Int {
         var score = 0
 

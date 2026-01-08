@@ -84,7 +84,7 @@ private fun setupChart(
     barData.barWidth = 0.3f
     chart.data = barData
 
-    // ===== X AXIS (DATES) =====
+    //  X AXIS (DATES)
     chart.xAxis.apply {
         position = XAxis.XAxisPosition.BOTTOM
         granularity = 1f
@@ -96,17 +96,7 @@ private fun setupChart(
         }
     }
 
-    // ===== Y AXIS (INTEGERS ONLY) =====
-   // chart.axisLeft.apply {
-     //   granularity = 1f
-       // isGranularityEnabled = true
-      //  axisMinimum = 0f
-        //valueFormatter = object : ValueFormatter() {
-          //  override fun getFormattedValue(value: Float): String {
-           //     return value.toInt().toString()
-         //   }
-        //}
-    //}
+
 
     chart.axisRight.isEnabled = false
     chart.description.text = "Quiz Performance"

@@ -42,7 +42,7 @@ class LoginPage : AppCompatActivity() {
             return
         }
 
-        // 🔍 Step 1: Find email using Unique ID
+        //  Find email
         db.collection("users")
             .whereEqualTo("username", username)
             .get()
@@ -54,7 +54,7 @@ class LoginPage : AppCompatActivity() {
 
                 val email = query.documents[0].getString("email")!!
 
-                // 🔐 Step 2: Login using Firebase Auth
+                //  Login using Firebase Auth
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnSuccessListener {
                         startActivity(

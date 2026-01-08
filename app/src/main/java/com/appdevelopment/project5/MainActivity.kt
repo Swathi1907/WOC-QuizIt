@@ -79,7 +79,7 @@ timeinminutes = intent.getIntExtra("TIME_LIMIT",5)
                 return@setOnClickListener
             }
 val safeContent = content.take(2000)
-            //Temporary: Ask for 3 questions
+
            val prompt = PromptBuilder.buildPrompt(content = safeContent, count = selectedCount, difficulty = selectedDifficulty)
             Toast.makeText(this,"Please wait while we process your request...",Toast.LENGTH_LONG).show()
             callGeminiDirect(prompt)
@@ -133,7 +133,7 @@ btnExtractedText.setOnClickListener {
                         uri,
                         Intent.FLAG_GRANT_READ_URI_PERMISSION
                     )
-                } catch (_: Exception) { /* ignore */
+                } catch (_: Exception) { // ignore
                 }
 
                 tvOutput.text = "Extracting content in the PDF"
@@ -167,7 +167,7 @@ tvOutput.text = "Extracted text will appear here"
         return temp
     }
 
-    // Render first page and run ML Kit OCR (suspending)
+    // Render first page and run ML Kit OCR
     private suspend fun renderLimitedPagesAndRecognize(uri: Uri): String {
         val tmp = copyUriToTempFile(uri)
         var pfd: ParcelFileDescriptor? = null
@@ -249,9 +249,9 @@ tvOutput.text = "Extracted text will appear here"
             "OCR failed: ${e.message}"
         }
     }
-    //ai output-> parsed using regex;parsed questions -> saved into room;quiz screen -> automatically opened!
+    //ai output-> parsed using json;parsed questions -> saved into room;quiz screen -> automatically opened!
 
-    // ai output-> parsed using regex; parsed questions -> saved into room; quiz screen -> automatically opened!
+    // ai output-> parsed using json; parsed questions -> saved into room; quiz screen -> automatically opened!
     private fun callGeminiDirect(prompt1: String) {
 
 

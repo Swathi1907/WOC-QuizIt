@@ -52,6 +52,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_card"
         android:hint="Password"
+
         android:textColor="@color/black"
         android:textColorHint="#999"
         tools:layout_editor_absoluteX="22dp"

@@ -22,7 +22,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val tvUsername = findViewById<TextView>(R.id.tvUsername)
         val tvEmailid = findViewById<TextView>(R.id.tvEmailid)
-//val UniqueId = findViewById<TextView>(R.id.tvUniqueId)
+
         val btnlogOut = findViewById<Button>(R.id.btnlogOut)
 //
         btnlogOut.setOnClickListener {
@@ -50,17 +50,17 @@ val auth = FirebaseAuth.getInstance()
             .addOnSuccessListener { doc->
                 if(doc.exists()){
                     tvUsername.text = doc.getString("username")
-                  //  UniqueId.text = doc.getString("uniqueId")
+
                 }
                else {
                    tvUsername.text = "user"
-                 //   UniqueId.text = "Not Set"
+
                 }
 
             }
             .addOnFailureListener {
                 tvUsername.text = "Error loading"
-              //  UniqueId.text = ""
+
             }
     }
 }
