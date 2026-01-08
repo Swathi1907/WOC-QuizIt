@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/image2"
+        android:src="@drawable/loginpage"
         android:scaleType="centerCrop" />
 <LinearLayout
     android:orientation="vertical"
@@ -39,7 +39,7 @@
         android:paddingStart="100dp"
         android:text="Quiz Smarter, Not Harder"
         android:textColor="?attr/colorOnPrimaryFixed"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold|italic"
 
         tools:layout_editor_absoluteX="138dp"
