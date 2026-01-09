@@ -61,7 +61,7 @@ Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
         // load questions from DB and setup UI
         lifecycleScope.launch {
             questions = loadQuestionsFromDB(quizId)
-
+//
             if (questions.isEmpty()) {
                 AlertDialog.Builder(this@QuizActivity)
                     .setTitle("No questions")

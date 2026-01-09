@@ -80,7 +80,7 @@ timeinminutes = intent.getIntExtra("TIME_LIMIT",5)
                 return@setOnClickListener
             }
 val safeContent = content.take(2000)
-
+//
            val prompt = PromptBuilder.buildPrompt(content = safeContent, count = selectedCount, difficulty = selectedDifficulty)
             Toast.makeText(this,"Please wait while we process your request...",Toast.LENGTH_LONG).show()
             callGeminiDirect(prompt)

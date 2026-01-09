@@ -14,7 +14,7 @@ class FirstPageActivity : AppCompatActivity() {
         val SignUp = findViewById<Button>(R.id.btnSignUp)
 
        login.setOnClickListener {
-
+//
           startActivity(Intent(this, LoginPage::class.java))
     }
         SignUp.setOnClickListener {

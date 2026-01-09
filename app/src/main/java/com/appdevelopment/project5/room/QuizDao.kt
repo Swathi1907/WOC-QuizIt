@@ -26,7 +26,7 @@ interface QuizDao {
         quizId :Long,
         userId :String
     ): List<QuizQuestionEntity>
-
+//
 @Query("SELECT * FROM Quiz_Results WHERE userId = :userId  ORDER BY timestamp ASC")
 fun getAllResults(userId: String): List<QuizResultEntity>
 

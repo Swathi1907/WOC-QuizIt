@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase
 abstract class AppDatabase : RoomDatabase() {
         abstract fun quizDao(): QuizDao
         abstract fun quizResultDao(): QuizResultDao
-
+//
     companion object {
                 @Volatile private var INSTANCE: AppDatabase? = null
 
