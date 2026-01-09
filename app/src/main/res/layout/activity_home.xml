@@ -25,8 +25,8 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="102dp"
-            android:layout_height="110dp"
+            android:layout_width="98dp"
+            android:layout_height="match_parent"
             app:srcCompat="@drawable/profile" />
 
         <TextView
