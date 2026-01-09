@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/loginpage"
+        android:src="@drawable/homepage"
         android:scaleType="centerCrop" />
 <LinearLayout
     android:orientation="vertical"
@@ -25,7 +25,7 @@
         android:layout_marginTop="230dp"
         android:layout_marginBottom="10dp"
         android:text ="You've studied enough,now try a quiz"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="55dp"
@@ -38,7 +38,7 @@
         android:layout_marginBottom="10dp"
         android:paddingStart="100dp"
         android:text="Quiz Smarter, Not Harder"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="19sp"
         android:textStyle="bold|italic"
 
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="250dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="#1E88E5"
+        android:backgroundTint="#14B8A6"
         android:text="Next..."
         android:textColor="#FFFFFF"
         tools:layout_editor_absoluteX="292dp"

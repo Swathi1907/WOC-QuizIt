@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@drawable/firstpage"
    >
+
 //
 <LinearLayout
     android:orientation="vertical"
@@ -15,20 +16,24 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="358dp"
-        android:layout_height="108dp"
+        android:layout_width="347dp"
+        android:layout_height="111dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/bluerectangle"
 
         android:orientation="horizontal">
 
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView2"
-            android:layout_width="120dp"
-            android:layout_height="110dp"
+            android:layout_width="119dp"
+            android:layout_height="123dp"
             android:scaleType="centerCrop"
+
             android:src="@drawable/profile" />
+
+
+
+
 
         <TextView
             android:id="@+id/tvgreetings"
@@ -38,10 +43,21 @@
             android:paddingStart="5dp"
             android:paddingTop="40dp"
             android:text="Hello,Username!"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="26dp"
+
+            android:textStyle="italic"
             app:srcCompat="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="243dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+
+        />
 
 
     </LinearLayout>
@@ -56,6 +72,7 @@
         android:paddingStart="150dp"
         android:paddingTop="9dp"
         android:text="QUIZIT"
+        android:textSize="20dp"
         android:textColor="@color/white"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="25dp"
@@ -94,9 +111,9 @@
             android:paddingStart="20dp"
             android:text=" NewQuiz"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="22dp"
             android:textStyle="normal"
-            app:backgroundTint="#00ACC1"
+            app:backgroundTint="#14B8A6"
             tools:layout_editor_absoluteX="215dp"
             tools:layout_editor_absoluteY="376dp" />
 
@@ -112,10 +129,10 @@
         android:paddingStart="20dp"
         android:text="Past Quizzes"
         android:textColor="@color/white"
-        android:textSize="20dp"
-
+        android:textSize="22dp"
+android:layout_marginTop="10dp"
         android:textStyle="normal"
-        app:backgroundTint="#00ACC1"
+        app:backgroundTint="#14B8A6"
         tools:layout_editor_absoluteX="25dp"
         tools:layout_editor_absoluteY="374dp" />
 </LinearLayout>
@@ -129,21 +146,24 @@
             android:layout_marginRight="0dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/shape1"
-            android:text="My efficiency"
+            android:text="My Efficiency"
             android:textColor="@color/white"
-            android:textSize="19dp"
+            android:textSize="20dp"
             android:textStyle="normal"
-            app:backgroundTint="#00ACC1"
+            app:backgroundTint="#14B8A6"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="522dp" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="70dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bluerectangle2"
+            android:paddingStart="50dp"
             android:text="Past quizzes will appear here"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20dp"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="10dp"
             android:textStyle="bold" />
     </LinearLayout>
 

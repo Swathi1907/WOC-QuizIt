@@ -34,4 +34,14 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tvclickhere"
+        android:paddingStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Click here"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 </LinearLayout>

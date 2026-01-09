@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:layout_width="match_parent"
-    android:background="#F5F6FA"
+    android:background="@drawable/firstpage"
     android:layout_height="match_parent">
 
     <TextView
@@ -23,7 +23,7 @@
         android:id="@+id/etQuestionCount"
         android:hint="Number of questions(Atmost 10)"
         android:inputType="number"
-        android:textColorHint="#999"
+        android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -35,7 +35,7 @@
         android:hint="Time in minutes"
         android:layout_marginTop="10dp"
         android:inputType="number"
-        android:textColorHint="#999"
+        android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#1E88E5"
+        android:backgroundTint="#14B8A6"
         android:text="Next"
         android:textColor="#FFFFFF" />
 

@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/loginpage"
+        android:src="@drawable/homepage"
         android:scaleType="centerCrop" />
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,7 +28,7 @@
         android:layout_marginBottom="40dp"
         android:paddingStart="60dp"
         android:text="Good to see you again! "
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="55dp"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="250dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="#1E88E5"
+        android:backgroundTint="#14B8A6"
         android:textColor="#FFFFFF"
         android:text="Next..."
         tools:layout_editor_absoluteX="292dp"

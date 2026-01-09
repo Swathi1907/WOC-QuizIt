@@ -15,11 +15,11 @@
             android:id="@+id/tvQuestionNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="1."
-            android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="8dp" />
+            android:textStyle="bold" />
         <!-- Question Text -->
         <TextView
             android:id="@+id/tvQuestion"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="This is a question text"
             android:textSize="18sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
 
             android:layout_marginBottom="16dp" />
 
@@ -43,8 +43,8 @@
                 android:layout_height="wrap_content"
                 android:text="A) Option A"
 
-                android:textColor="@color/radio_blue_selector"
-                android:buttonTint="@color/radio_blue_selector"/>
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/optB"
@@ -52,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:text="B) Option B"
 
-                android:textColor="@color/radio_blue_selector"
-                android:buttonTint="@color/radio_blue_selector"/>
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/optC"
@@ -61,8 +61,8 @@
                 android:layout_height="wrap_content"
                 android:text="C) Option C"
 
-                android:textColor="@color/radio_blue_selector"
-                android:buttonTint="@color/radio_blue_selector"/>
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/optD"
@@ -70,8 +70,8 @@
                 android:layout_height="wrap_content"
                 android:text="D) Option D"
 
-                android:textColor="@color/radio_blue_selector"
-                android:buttonTint="@color/radio_blue_selector"/>
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
         </RadioGroup>
         <!-- Explanation (hidden until after submission) -->
         <TextView

@@ -17,16 +17,20 @@
         android:paddingLeft="20dp"
         android:paddingTop="59dp"
         android:text="Profile Details"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="normal" />
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
-        app:srcCompat="@drawable/profile"
-        android:layout_marginTop="60dp"/>
+        android:layout_width="133dp"
+        android:layout_height="115dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile4" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,10 +102,10 @@
         android:id="@+id/btnlogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="130dp"
+        android:layout_marginLeft="145dp"
         android:layout_marginTop="50dp"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#039BE5"
+        android:backgroundTint="#14B8A6"
         android:text="Log Out" />
 
 

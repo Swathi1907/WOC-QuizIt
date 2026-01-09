@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F5F6FA"
+    android:background="@drawable/quiz"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:text="Quiz"
         android:textSize="22sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="12dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         />
     <TextView
         android:id="@+id/tvTimer"
@@ -26,7 +26,7 @@
         android:text="Time Left: 00:00"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@android:color/holo_orange_light"
         android:layout_marginBottom="8dp"/>
 
     <!-- ViewPager2 to display each question page -->
@@ -52,14 +52,14 @@ android:layout_marginBottom="10dp"
             android:layout_height="wrap_content"
             android:text="Previous"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#039BE5"/>
+            android:backgroundTint="#14B8A6"/>
 
         <Button
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Next"
-            android:backgroundTint="#039BE5"
+            android:backgroundTint="#14B8A6"
             android:textColor="#FFFFFF"
             android:layout_marginStart="16dp" />
     </LinearLayout>
@@ -72,7 +72,7 @@ android:layout_marginBottom="10dp"
         android:layout_marginLeft="40dp"
 
         android:layout_marginBottom="60dp"
-        android:backgroundTint="#039BE5"
+        android:backgroundTint="#14B8A6"
         android:text="Submit Quiz"
         android:textColor="#FFFFFF" />
 

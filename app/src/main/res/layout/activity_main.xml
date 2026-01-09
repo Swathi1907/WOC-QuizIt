@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F5F6FA"
+    android:background="@drawable/loginpage"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -18,10 +18,11 @@ android:id="@+id/main"
         <!-- Title -->
         <TextView
             android:text="QuizzIt"
-            android:textSize="24sp"
+            android:textSize="29sp"
             android:textStyle="bold"
+            android:paddingStart="140dp"
             android:layout_marginTop="50dp"
-            android:textColor="#333333"
+            android:textColor="@color/white"
             android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -51,7 +52,7 @@ android:id="@+id/main"
                 android:layout_height="wrap_content"
                 android:text="Choose PDF"
                 android:layout_marginLeft="40dp"
-                android:backgroundTint="#039BE5"
+                android:backgroundTint="#14B8A6"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
@@ -93,7 +94,7 @@ android:id="@+id/main"
                 android:text="Fetch URL Content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:backgroundTint="#039BE5"
+                android:backgroundTint="#14B8A6"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
@@ -104,7 +105,7 @@ android:id="@+id/main"
             android:layout_height="wrap_content"
             android:text="Generate AI Quiz"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#039BE5"
+            android:backgroundTint="#14B8A6"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -125,7 +126,7 @@ android:id="@+id/main"
                 android:layout_height="wrap_content"
                 android:text="Show Extracted Text"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#039BE5"/>
+                android:backgroundTint="#14B8A6"/>
 
             <TextView
                 android:layout_width="wrap_content"
