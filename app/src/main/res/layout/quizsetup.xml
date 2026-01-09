@@ -19,7 +19,7 @@
 
     <EditText
         android:id="@+id/etQuestionCount"
-        android:hint="Number of questions"
+        android:hint="Number of questions(Atmost 10)"
         android:inputType="number"
         android:textColorHint="#999"
         android:textColor="@color/black"

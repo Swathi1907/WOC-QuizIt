@@ -6,28 +6,32 @@
     android:padding="12dp"
     android:clickable="true"
     android:focusable="true"
+
     android:layout_marginBottom="8dp"
-    android:background="#EEEEEE">
+    android:background="@drawable/bluerectangle2">
 
 
     <TextView
         android:id="@+id/tvScore"
+        android:paddingStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold" />
     <TextView
         android:id="@+id/tvTotal"
+        android:paddingStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tvDate"
+        android:paddingStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="12sp" />
 </LinearLayout>

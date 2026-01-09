@@ -71,7 +71,7 @@ android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
 
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="#039BE5"
         android:text="Submit Quiz"
         android:textColor="#FFFFFF" />

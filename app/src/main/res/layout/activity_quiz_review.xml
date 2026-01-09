@@ -4,15 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background = "@drawable/bluerectangle"
+
     android:padding="12dp">
 
     <TextView
         android:layout_width="159dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="39dp"
         android:layout_marginBottom="10dp"
         android:text="Quiz Review "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:paddingStart="10dp"
         android:textStyle="bold" />
@@ -20,11 +22,11 @@
     <TextView
         android:layout_width="353dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+
         android:paddingStart="10dp"
         android:layout_marginBottom="10dp"
         android:text="Scroll down for more questions "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="normal" />
 
@@ -32,6 +34,7 @@
         android:id="@+id/rvReview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/white"
         android:layout_weight="1"/>
 //
 </LinearLayout>
