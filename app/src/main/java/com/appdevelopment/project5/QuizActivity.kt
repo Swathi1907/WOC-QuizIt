@@ -27,7 +27,7 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var btnNext: Button
     private lateinit var btnSubmit: Button
     private lateinit var tvTitle: TextView
-
+    private lateinit var quiztitle: String
 private lateinit var tvtimer: TextView
 private var countDownTimer: CountDownTimer? = null
 
@@ -52,11 +52,12 @@ Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
         btnBefore = findViewById(R.id.btnBefore)
         btnNext = findViewById(R.id.btnNext)
         btnSubmit = findViewById(R.id.btnSubmit)
-        tvTitle = findViewById(R.id.tvQuizTitle)
+        tvTitle = findViewById<TextView>(R.id.tvQuizTitle)
 
         // get quiz id passed from MainActivity
         quizId = intent.getLongExtra("QUIZ_ID", 0L)
 
+     //   tvTitle = intent.getStringExtra(quiztitle).toString()
         // load questions from DB and setup UI
         lifecycleScope.launch {
             questions = loadQuestionsFromDB(quizId)
@@ -71,7 +72,7 @@ Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
             }
 
             // optionally set title to show number of questions
-            tvTitle.text = "Quiz — ${questions.size} Qs"
+            tvTitle.text = "Quiz - ${questions.size}Q's"
 
             // create and set adapter
             adapter = QuestionPagerAdapter(questions, this@QuizActivity)
@@ -100,7 +101,8 @@ lifecycleScope.launch(Dispatchers.IO) {
         quizId = quizId,
         score = score,
         totalQuestions = adapter.itemCount,
-        userId = userId
+        userId = userId,
+
     )
     AppDatabase.getDatabase(this@QuizActivity)
         .quizResultDao()
@@ -112,7 +114,7 @@ lifecycleScope.launch(Dispatchers.IO) {
                     .setCancelable(false)
                     .setPositiveButton("OK") { _, _ ->
 
-                        // 👉 Navigate ONLY after OK is pressed
+                        //  Navigate ONLY after OK is pressed
                         val intent = Intent(this@QuizActivity, HomeActivity::class.java)
                         intent.flags =
                             Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -158,7 +160,8 @@ private fun startTimer() {
                 quizId = quizId,
                 score = score,
                 totalQuestions = adapter.itemCount,
-                userId = userId
+                userId = userId,
+
             )
             AppDatabase.getDatabase(this@QuizActivity)
                 .quizResultDao()

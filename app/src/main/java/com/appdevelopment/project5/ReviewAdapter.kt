@@ -6,13 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.appdevelopment.project5.room.QuizQuestionEntity
+import com.google.mlkit.vision.text.internal.TextRegistrar
 
 class ReviewAdapter(
     private val questions: List<QuizQuestionEntity>
 ) : RecyclerView.Adapter<ReviewAdapter.ReviewVH>() {
 
     class ReviewVH(view: View) : RecyclerView.ViewHolder(view) {
+
       val qNumber: TextView =view.findViewById(R.id.tvQuestionNumber)
+
         val q: TextView = view.findViewById(R.id.tvQuestion)
         val a: TextView = view.findViewById(R.id.tvA)
         val b: TextView = view.findViewById(R.id.tvB)

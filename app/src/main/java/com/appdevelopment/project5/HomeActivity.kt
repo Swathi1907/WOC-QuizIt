@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,12 +40,17 @@ profile.setOnClickListener {
     startActivity(intent)
 }
 btnAttemptedQuizzes.setOnClickListener {
+
+
+
     loadingQuizResults()
 }
         btnPerformances.setOnClickListener{
+
             startActivity(Intent(this,PerformanceActivity::class.java))
         }
         btnCreateQuiz.setOnClickListener {
+
             val intent = Intent(this, QuizSetUpActivity::class.java)
             startActivity(intent)
         }

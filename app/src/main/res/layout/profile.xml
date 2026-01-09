@@ -13,7 +13,7 @@
         android:layout_height="109dp"
         android:layout_marginLeft="0dp"
 
-        android:background="@drawable/bluerectangle"
+        android:background="@drawable/bluerectangle3"
         android:paddingLeft="20dp"
         android:paddingTop="59dp"
         android:text="Profile Details"
@@ -25,7 +25,7 @@
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="190dp"
-        app:srcCompat="@drawable/profile2"
+        app:srcCompat="@drawable/profile"
         android:layout_marginTop="60dp"/>
     <LinearLayout
         android:layout_width="match_parent"

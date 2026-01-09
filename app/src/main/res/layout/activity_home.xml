@@ -15,30 +15,31 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="390dp"
-        android:layout_height="100dp"
-       android:background="@drawable/bluerectangle"
+        android:layout_width="358dp"
+        android:layout_height="108dp"
         android:layout_marginTop="80dp"
+        android:background="@drawable/bluerectangle"
+
         android:orientation="horizontal">
 
-//
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView2"
-            android:layout_width="98dp"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/profile" />
+            android:layout_width="120dp"
+            android:layout_height="110dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
 
         <TextView
             android:id="@+id/tvgreetings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:paddingStart="10dp"
+            android:paddingStart="5dp"
             android:paddingTop="40dp"
-            android:text="HELLO,Username!"
+            android:text="Hello,Username!"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             app:srcCompat="@drawable/profile" />
 
@@ -51,7 +52,7 @@
         android:layout_height="42dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/border"
+        android:background="@drawable/bluerectangle2"
         android:paddingStart="150dp"
         android:paddingTop="9dp"
         android:text="QUIZIT"

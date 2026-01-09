@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnGenerateAI: Button
     private lateinit var tvOutput: TextView
     private var selectedCount =0
-
+    private var quiztitle: String? = "Untitled Quiz"
     private var  timeinminutes= 0
 
     private var selectedDifficulty = ""
@@ -66,6 +66,7 @@ Log.d("KEY_TEST","Gemini key = ${GeminiConfig.API_KEY}")
          btnGenerateAI = findViewById(R.id.btnGenerateAI)
 selectedCount = intent.getIntExtra("count", -1)
         selectedDifficulty = intent.getStringExtra("difficulty")?:"medium"
+        //quiztitle= intent.getStringExtra("Quiz Title")
 timeinminutes = intent.getIntExtra("TIME_LIMIT",5)
         if (selectedCount <= 0) {
             Toast.makeText(this, "Invalid question count", Toast.LENGTH_SHORT).show()

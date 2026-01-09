@@ -17,8 +17,10 @@ class QuizSetUpActivity : AppCompatActivity() {
         val difficulty = findViewById<Spinner>(R.id.spDifficulty)
         val btnNext2 = findViewById<Button>(R.id.btnNext2)
 val ettimer = findViewById<EditText>(R.id.ettimer)
+      //  val etquiztitle = findViewById<EditText>(R.id.etquiztitle)
 
         btnNext2.setOnClickListener {
+       //     val quiztitle = etquiztitle.text.toString().trim()
             val selectedtime = ettimer.text.toString().trim().toIntOrNull()
             val selectedCount = count.text.toString().trim().toIntOrNull()
             val selectedDifficulty = difficulty.selectedItem.toString()
@@ -36,7 +38,7 @@ val ettimer = findViewById<EditText>(R.id.ettimer)
             }
 
             val intent = Intent(this, MainActivity::class.java)
-
+         //   intent.putExtra("Quiz Title",quiztitle)
                 intent.putExtra("count", selectedCount)
             intent.putExtra("difficulty", selectedDifficulty)
                intent.putExtra("TIME_LIMIT",selectedtime)

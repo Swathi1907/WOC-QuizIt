@@ -13,6 +13,7 @@ data class QuizResultEntity(
     val totalQuestions: Int,
     val score: Int,
     val userId: String,
+
     val timestamp: Long = System.currentTimeMillis()
 
 )
