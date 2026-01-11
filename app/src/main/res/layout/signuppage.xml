@@ -22,16 +22,17 @@
         android:id="@+id/textView4"
         android:layout_width="385dp"
         android:layout_height="41dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="270dp"
         android:layout_marginBottom="10dp"
-        android:text ="You've studied enough,now try a quiz"
+        android:text ="Create Account"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="29sp"
+        android:paddingStart="90dp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="55dp"
         tools:layout_editor_absoluteY="164dp" />
 
-    <TextView
+  <!--  <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +44,7 @@
         android:textStyle="bold|italic"
 
         tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="216dp" />
+        tools:layout_editor_absoluteY="216dp" /> -->
 
     <EditText
         android:id="@+id/etUsername"

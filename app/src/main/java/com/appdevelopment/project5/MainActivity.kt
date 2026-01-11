@@ -136,7 +136,7 @@ btnExtractedText.setOnClickListener {
                     )
                 } catch (_: Exception) { // ignore
                 }
-
+                Toast.makeText(this,"Extracting content in the PDF",Toast.LENGTH_SHORT).show()
                 tvOutput.text = "Extracting content in the PDF"
                 // run extraction in background
                 lifecycleScope.launch(Dispatchers.IO) {

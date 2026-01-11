@@ -4,38 +4,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/firstpage"
+    android:background="@drawable/homepage2"
    >
 
-//
+
 <LinearLayout
     android:orientation="vertical"
     android:padding="16dp"
-
+android:layout_marginTop="40dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+  <!--  <TextView
+        android:id="@+id/textView7"
+        android:layout_width="350dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/bluerectangle2"
+        android:paddingStart="150dp"
+        android:paddingTop="9dp"
+        android:text="QUIZIT"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="141dp" /> -->
     <LinearLayout
-        android:layout_width="347dp"
-        android:layout_height="111dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/bluerectangle"
+        android:layout_width="352dp"
+        android:layout_height="129dp"
 
-        android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageView2"
-            android:layout_width="119dp"
-            android:layout_height="123dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="87dp"
+
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvgreetings"
+                android:layout_width="241dp"
+                android:layout_height="match_parent"
+
+                android:paddingStart="10dp"
+                android:paddingTop="55dp"
+                android:text="Hello,Username!"
+                android:textColor="@color/black"
+                android:textSize="26dp"
+
+                android:textStyle="normal"
+                app:srcCompat="@drawable/profile" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView2"
+                android:layout_width="77dp"
+                android:layout_height="81dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:scaleType="centerCrop"
+
+                android:src="@drawable/boyandgirl" />
+
+
+            <!--  <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView3"
+            android:layout_width="77dp"
+            android:layout_height="81dp"
             android:scaleType="centerCrop"
 
-            android:src="@drawable/profile" />
+            android:src="@drawable/profile" /> -->
 
 
-
-
-
-        <TextView
+            <!--   <TextView
             android:id="@+id/tvgreetings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,15 +98,58 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView" />
+-->
+
+            />
 
 
-        />
-
-
-    </LinearLayout>
+        </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/textView7"
+        android:layout_width="226dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="10dp"
+
+        android:paddingStart="7dp"
+        android:text="Let's test your knowledge today"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/tvprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+
+        android:paddingStart="40dp"
+        android:paddingTop="4dp"
+        android:text="Profile"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+
+        android:textStyle="normal"
+        app:srcCompat="@drawable/profile" />
+</LinearLayout>
+      <!--  <TextView
+            android:id="@+id/tvprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+
+            android:paddingStart="280dp"
+            android:paddingTop="4dp"
+            android:text="Profile"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+
+            android:textStyle="italic"
+            app:srcCompat="@drawable/profile" /> -->
+    </LinearLayout>
+   <!-- <TextView
+
         android:layout_width="350dp"
         android:layout_height="42dp"
         android:layout_marginTop="20dp"
@@ -76,16 +162,18 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="141dp" />
+        tools:layout_editor_absoluteY="141dp" /> -->
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:textStyle="bold"
-
-        android:paddingStart="20dp"
-        android:textColor="@color/black"
+android:layout_marginTop="40dp"
+android:background="@drawable/bluerectangle2"
+       android:paddingStart="20dp"
+        android:paddingTop="9dp"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:text="DASHBOARD" />
 
@@ -109,9 +197,9 @@
 
             android:background="@drawable/shape1"
             android:paddingStart="20dp"
-            android:text=" NewQuiz"
+            android:text="🚀📝 NewQuiz"
             android:textColor="@color/white"
-            android:textSize="22dp"
+            android:textSize="19dp"
             android:textStyle="normal"
             app:backgroundTint="#14B8A6"
             tools:layout_editor_absoluteX="215dp"
@@ -123,14 +211,14 @@
         android:layout_width="176dp"
         android:layout_height="143dp"
         android:layout_marginLeft="10dp"
-
+android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/shape1"
         android:paddingStart="20dp"
-        android:text="Past Quizzes"
+        android:text="📜Past Quizzes"
         android:textColor="@color/white"
-        android:textSize="22dp"
-android:layout_marginTop="10dp"
+        android:textSize="19dp"
+
         android:textStyle="normal"
         app:backgroundTint="#14B8A6"
         tools:layout_editor_absoluteX="25dp"
@@ -141,30 +229,19 @@ android:layout_marginTop="10dp"
             android:id="@+id/btnPerformances"
             android:layout_width="182dp"
             android:layout_height="144dp"
-
+android:layout_marginLeft="90dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/shape1"
-            android:text="My Efficiency"
+            android:text="📊My Efficiency"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="19dp"
             android:textStyle="normal"
             app:backgroundTint="#14B8A6"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="522dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="@drawable/bluerectangle2"
-            android:paddingStart="50dp"
-            android:text="Past quizzes will appear here"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:paddingTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold" />
     </LinearLayout>
 
     <include

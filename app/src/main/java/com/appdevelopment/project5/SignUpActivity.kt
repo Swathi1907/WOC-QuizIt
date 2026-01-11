@@ -78,7 +78,7 @@ val uid = user.uid
                     .document(uid)
                     .set(userMap, SetOptions.merge()) // overwrite safely
                     .addOnSuccessListener {
-                        startActivity(Intent(this, ProfileActivity::class.java))
+                        startActivity(Intent(this, HomeActivity::class.java))
                         finish()
                     }
                     .addOnFailureListener {

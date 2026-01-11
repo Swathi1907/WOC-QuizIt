@@ -27,7 +27,7 @@ class ProfileActivity : AppCompatActivity() {
 //
         btnlogOut.setOnClickListener {
 FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, LoginPage::class.java)
+            val intent = Intent(this, FirstPageActivity::class.java)
       intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
               Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

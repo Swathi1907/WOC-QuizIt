@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project5</string>
+    <string name="app_name">QuizIt</string>
     <string-array name="difficultyOptions">
         <item>EASY</item>
         <item>MEDIUM</item>

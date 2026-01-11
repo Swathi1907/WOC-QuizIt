@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:text="This is a question text"
             android:textSize="18sp"
+
             android:textColor="@color/white"
 
             android:layout_marginBottom="16dp" />

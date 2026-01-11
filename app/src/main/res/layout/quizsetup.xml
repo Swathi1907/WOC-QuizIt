@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:layout_width="match_parent"
-    android:background="@drawable/firstpage"
+    android:background="@drawable/quizpage3"
     android:layout_height="match_parent">
 
     <TextView
@@ -12,7 +12,7 @@
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="94dp"
         android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -23,7 +23,7 @@
         android:id="@+id/etQuestionCount"
         android:hint="Number of questions(Atmost 10)"
         android:inputType="number"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/white"
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -35,7 +35,7 @@
         android:hint="Time in minutes"
         android:layout_marginTop="10dp"
         android:inputType="number"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/white"
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -48,6 +48,7 @@
         android:paddingStart="120dp"
         android:textSize="20dp"
         android:text="Select Difficulty"
+        android:textStyle="bold"
         android:textColor="@color/black" />
     <Spinner
         android:id="@+id/spDifficulty"

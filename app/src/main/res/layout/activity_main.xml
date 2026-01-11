@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/loginpage"
+    android:background="@drawable/quizpage3"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -48,6 +48,7 @@ android:id="@+id/main"
             <Button
                 android:id="@+id/btnPickPdf"
                 android:layout_marginRight="40dp"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Choose PDF"
@@ -92,6 +93,7 @@ android:id="@+id/main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Fetch URL Content"
+                android:textStyle="bold"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:backgroundTint="#14B8A6"
@@ -107,6 +109,7 @@ android:id="@+id/main"
             android:layout_marginTop="10dp"
             android:backgroundTint="#14B8A6"
             android:textColor="#FFFFFF"
+            android:textStyle="bold"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             app:layout_constraintBottom_toBottomOf="@id/tvOutput"/>
@@ -126,6 +129,7 @@ android:id="@+id/main"
                 android:layout_height="wrap_content"
                 android:text="Show Extracted Text"
                 android:textColor="#FFFFFF"
+                android:textStyle="bold"
                 android:backgroundTint="#14B8A6"/>
 
             <TextView
@@ -133,7 +137,9 @@ android:id="@+id/main"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Extracted Text"
-android:layout_marginTop="10dp"
+android:layout_marginTop="20dp"
+                android:layout_marginLeft="90sp"
+
                 android:textColor="#222222"
                 android:textSize="18sp"
                 android:textStyle="bold" />

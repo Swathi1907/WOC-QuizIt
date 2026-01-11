@@ -7,29 +7,42 @@
     android:layout_height="match_parent">
 
     <!--QUIZ TITLE-->
-    <TextView
-        android:id="@+id/tvQuizTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quiz"
-        android:textSize="22sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="12dp"
-        android:layout_marginTop="40dp"
-        />
-    <TextView
-        android:id="@+id/tvTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Time Left: 00:00"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/holo_orange_light"
-        android:layout_marginBottom="8dp"/>
 
     <!-- ViewPager2 to display each question page -->
+    <LinearLayout
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvQuizTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+android:layout_marginLeft="125sp"
+
+            android:layout_marginBottom="2dp"
+            android:paddingTop="20dp"
+            android:text="Quiz"
+            android:textColor="@color/white"
+            android:textSize="29sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+android:layout_marginLeft="5sp"
+
+            android:text="Time Left: 00:00"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerQuestions"
         android:layout_width="match_parent"
@@ -49,15 +62,15 @@ android:layout_marginBottom="10dp"
         <Button
             android:id="@+id/btnBefore"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:text="Previous"
             android:textColor="#FFFFFF"
             android:backgroundTint="#14B8A6"/>
 
         <Button
             android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
             android:text="Next"
             android:backgroundTint="#14B8A6"
             android:textColor="#FFFFFF"
@@ -67,8 +80,8 @@ android:layout_marginBottom="10dp"
     <!-- SUBMIT BUTTON -->
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="289dp"
-        android:layout_height="wrap_content"
+        android:layout_width="288dp"
+        android:layout_height="55dp"
         android:layout_marginLeft="40dp"
 
         android:layout_marginBottom="60dp"
