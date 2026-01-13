@@ -31,8 +31,10 @@ class ReviewAdapter(
     }
 
     override fun onBindViewHolder(h: ReviewVH, pos: Int) {
-        val q = questions[pos]
+        val q = questions[pos] // take one item from the list questions at index pos and store it in q
+
 h.qNumber.text = "Question ${q.number}"
+
         h.q.text = q.question
         h.a.text = "A) ${q.optionA}"
         h.b.text = "B) ${q.optionB}"

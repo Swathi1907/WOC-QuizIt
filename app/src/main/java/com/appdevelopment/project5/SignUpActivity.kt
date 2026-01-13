@@ -49,11 +49,34 @@ class SignUpActivity: AppCompatActivity() {
 //
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "Error in checking Unique Id", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error in checking Username", Toast.LENGTH_SHORT).show()
                 }
 
         }
 
+    }
+    private fun createUser(
+        username: String,
+
+        email: String,
+        password: String
+    ){
+        val auth = FirebaseAuth.getInstance()
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnSuccessListener {
+                saveUserProfileAndGo(username,  email)
+            }
+            .addOnFailureListener { e ->
+
+                if (e is FirebaseAuthUserCollisionException) {
+                    Toast.makeText(this,"Email already exists",Toast.LENGTH_SHORT).show()
+
+                }
+
+                else {
+                    Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                }
+            }
     }
     private fun saveUserProfileAndGo(
         username: String,
@@ -61,15 +84,17 @@ class SignUpActivity: AppCompatActivity() {
         email: String
     ) {
         val user = FirebaseAuth.getInstance().currentUser?: return
-val uid = user.uid
+        // ?:return means if(user == null) {return } means exit from the function
+val uid = user.uid // userid unique string automatically created by firebase authentication never changes
+        // always use uid as document id
         val profileUpdates = com.google.firebase.auth.userProfileChangeRequest {
-            displayName = username
+            displayName = username //firebase doesn't know username but it knows display name
         }
         user.updateProfile(profileUpdates)
             .addOnSuccessListener {
                 val userMap = hashMapOf(
                     "username" to username,
-                    "email" to email,
+                    "email" to email
 
                 )
 
@@ -86,29 +111,7 @@ val uid = user.uid
                     }
             }
     }
-    private fun createUser(
-        username: String,
 
-        email: String,
-        password: String
-    ){
-        val auth = FirebaseAuth.getInstance()
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnSuccessListener {
-                saveUserProfileAndGo(username,  email)
-            }
-            .addOnFailureListener { e ->
-
-                if (e is FirebaseAuthUserCollisionException) {
-Toast.makeText(this,"Email already exists",Toast.LENGTH_SHORT).show()
-
-                        }
-
-                 else {
-                    Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
 
 
 }

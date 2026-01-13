@@ -24,21 +24,35 @@ class QuizResultAdapter(
         val tvTotal: TextView = itemView.findViewById(R.id.tvTotal)
         val tvDate: TextView = itemView.findViewById(R.id.tvDate)
     }
-
+// the below are three core parts of recycler view adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuizResultViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_result, parent, false)
+        val view = LayoutInflater.from(parent.context) // xml -> view converter
+            // layout inflator is a class
+            .inflate(R.layout.item_result, parent, false) //converts xml layout file into real view object
+        // converts xml to view
+        //prepares layout using recycler view as parent and does not attach it like preparing empty boxes and has no data
+        //recycler view does not create 100 views for 100 items creates only enough rows to fill screen
+        //reuses them while scrolling
         return QuizResultViewHolder(view)
     }
-//
+// adapter connects data to UI
+    // view holder holds rows views
+    // on create view holder creates row
+    // on bind view holder fills row with data
+    // recycler view shows scrolling list
     override fun onBindViewHolder(holder: QuizResultViewHolder, position: Int) {
         val result = quizResults[position]
-
+// here we bind data to that row
+    //recycler view calls it again again while scrolling
+    //
         holder.tvScore.text = "Score: ${result.score}"
+
         holder.tvTotal.text = "Total Questions: ${result.totalQuestions}"
+
         holder.tvDate.text = "Quiz ID: ${result.quizId}"
         holder.itemView.setOnClickListener {
-            Onclick(result.quizId)
+            Onclick(result.quizId) // when user clicks the row this function is called
+            //
         }
     }
 

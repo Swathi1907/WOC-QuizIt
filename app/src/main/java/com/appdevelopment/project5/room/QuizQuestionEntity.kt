@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 var selectedOption: String? = null
 @Entity()
 data class QuizQuestionEntity(
-@PrimaryKey(autoGenerate = true)
+@PrimaryKey(autoGenerate = true) // unique id for each quiz question in the database
 val id: Long = 0L,
     val userId: String,
     val quizId: Long,
