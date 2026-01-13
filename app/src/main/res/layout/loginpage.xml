@@ -38,7 +38,7 @@
         android:layout_width="355dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_card"
+        android:background="@drawable/mainxml"
         android:hint="Username"
         android:textColorHint="#999"
         android:textColor="@color/black"
@@ -50,7 +50,7 @@
         android:layout_width="355dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_card"
+        android:background="@drawable/mainxml"
         android:hint="Password"
 
         android:textColor="@color/black"
