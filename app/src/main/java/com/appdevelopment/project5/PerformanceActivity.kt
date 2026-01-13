@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class PerformanceActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) { //runs when activity is created
         super.onCreate(savedInstanceState)
         setContentView(R.layout.performance)
 
@@ -35,7 +35,7 @@ class PerformanceActivity : AppCompatActivity() {
               val db=  AppDatabase.getDatabase(this@PerformanceActivity)
                 val userId = FirebaseAuth.getInstance().currentUser!!.uid ?: return@withContext emptyList()
                    db .quizResultDao()
-                    .getAllResults(userId)
+                    .getAllResults(userId) // fetch quiz results for this user
             }
 
             if (results.isNotEmpty()) {
@@ -48,12 +48,12 @@ private fun setupChart(
     chart: BarChart,
     results: List<QuizResultEntity>
 ) {
-    val entries = ArrayList<BarEntry>()
-    val dateLabels = ArrayList<String>()
+    val entries = ArrayList<BarEntry>() // bar heights (scores)
+    val dateLabels = ArrayList<String>() // x axis labels
 
-    val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
-
-    results.forEachIndexed { index, result ->
+    val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault()) // converts time stamp to date
+// converts db data to chart bars
+    results.forEachIndexed { index, result -> // x position is index
         // bar height = score
         entries.add(
             BarEntry(
@@ -65,10 +65,10 @@ private fun setupChart(
         // x-axis label = date
         dateLabels.add(dateFormat.format(Date(result.timestamp)))
     }
-
+// creates bar group named "Score"
     val dataSet = BarDataSet(entries, "Score")
-    dataSet.color = Color.parseColor("#00ACC1") // blue
-    dataSet.valueTextSize = 12f
+    dataSet.color = Color.parseColor("#14B8A6") // sea green
+    dataSet.valueTextSize = 15f
 
     //  Show score/total on top of bar
     dataSet.valueFormatter = object : ValueFormatter() {
@@ -79,16 +79,17 @@ private fun setupChart(
 
         }
     }
-
-    val barData = BarData(dataSet)
+// attach data
+    val barData = BarData(dataSet) // wraps dataset into chart data
     barData.barWidth = 0.3f
     chart.data = barData
 
     //  X AXIS (DATES)
     chart.xAxis.apply {
         position = XAxis.XAxisPosition.BOTTOM
-        granularity = 1f
-        setDrawGridLines(false)
+        granularity = 1f // one label per bar
+        //granularity means the step size btw values shown on axis
+        setDrawGridLines(false) // vertical lines are hidden
         valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
                 return dateLabels.getOrNull(value.toInt()) ?: ""
@@ -100,13 +101,13 @@ private fun setupChart(
 
     chart.axisRight.isEnabled = false
     chart.description.text = "Quiz Performance"
-    chart.setFitBars(true)
+    chart.setFitBars(true) // adjust bars spacing
     // Find highest score
     val maxScore = results.maxOf { it.score }   // or totalQuestions
 
 // Y-axis configuration (GRAPH HEIGHT)
     chart.axisLeft.apply {
-        axisMinimum = 0f
+        axisMinimum = 0f // starts from 0
         axisMaximum = (maxScore + 7).toFloat()   ///////// MAX HEIGHT HERE
         granularity = 1f
         isGranularityEnabled = true
@@ -116,6 +117,6 @@ private fun setupChart(
             }
         }
     }
-    chart.invalidate()
+    chart.invalidate() // refreshes and redraws the chart
 }
 }

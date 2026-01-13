@@ -162,13 +162,14 @@ tvOutput.text = "Extracted text will appear here"
     // Copy Uri content to a temporary file (helps with providers that don't expose descriptor)
     private fun copyUriToTempFile(uri: Uri): File {
         val temp = File.createTempFile("picked_pdf_", ".pdf", cacheDir)
-        contentResolver.openInputStream(uri)?.use { input ->
-            temp.outputStream().use { out -> input.copyTo(out) }
+        contentResolver.openInputStream(uri)?.use { input -> // asks who owns this uri that app sends data as a stream
+            temp.outputStream().use { out -> input.copyTo(out) } // now we have real file
         }
         return temp
     }
-
-    // Render first page and run ML Kit OCR
+// temp file  -> parcel file descriptor
+    // parcel file descriptor is needed by pdf page renderer this is the bridge
+    // Render page and run ML Kit OCR
     private suspend fun renderLimitedPagesAndRecognize(uri: Uri): String {
         val tmp = copyUriToTempFile(uri)
         var pfd: ParcelFileDescriptor? = null
@@ -179,7 +180,8 @@ tvOutput.text = "Extracted text will appear here"
 
         try {
             pfd = ParcelFileDescriptor.open(tmp, ParcelFileDescriptor.MODE_READ_ONLY)
-            renderer = PdfRenderer(pfd)
+            renderer = PdfRenderer(pfd) // now pdf renderer understands where the file is and how to read it
+            // reads bytes from file
 
             val totalPages = renderer.pageCount
             if (totalPages == 0) return "PDF has no pages."
@@ -191,7 +193,7 @@ tvOutput.text = "Extracted text will appear here"
 
             val recognizer = TextRecognition.getClient(
                 TextRecognizerOptions.DEFAULT_OPTIONS
-            )
+            ) // this is ocr engine
 
             for (i in 0 until pagesToProcess) {
                 Log.d("PDF_OCR", "Processing page ${i + 1}/$pagesToProcess")
@@ -232,7 +234,7 @@ tvOutput.text = "Extracted text will appear here"
             try { renderer?.close() } catch (_: Exception) {}
             try { pfd?.close() } catch (_: Exception) {}
             try { tmp.delete() } catch (_: Exception) {}
-        }
+        } // we should stop this after every page other wise app would crash
     }
 
     // suspend wrapper to await ML Kit Task
@@ -376,12 +378,15 @@ Log.d("GEMINI_RAW",response.body().toString())
 
                 // Simple JSoup fetch on background thread
                 private fun fetchUrlText(url: String, tvOutput: TextView) {
-                    lifecycleScope.launch(Dispatchers.IO) {
+                    lifecycleScope.launch(Dispatchers.IO) { // coroutine automatically cancels when activity is destroyed
                         try {
-                            val doc = Jsoup.connect(url).userAgent("Mozilla/5.0")
-                                .timeout(15_000)
-                                .get()
-                            val extracted = doc.body().text()
+                            val doc = Jsoup.connect(url).userAgent("Mozilla/5.0") //opens the website pretends to be a browser
+                                // app pretends like real browser and website allows access downloads html page
+    // jsoup removes the html tags scripts etc...
+
+                                .timeout(15_000) // max wait 15seconds
+                                .get() // downloads the html
+                            val extracted = doc.body().text() //removes html tags
 
                             val safeText = extracted.take(1200)
                             withContext(Dispatchers.Main) {

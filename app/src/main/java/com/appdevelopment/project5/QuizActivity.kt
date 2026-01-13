@@ -30,16 +30,16 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var quiztitle: String
 private lateinit var tvtimer: TextView
 private var countDownTimer: CountDownTimer? = null
-
+//
     private var timeLimitMillis: Long = 0L
 
     private var quizId: Long = 0L
-    private lateinit var adapter: QuestionPagerAdapter
+    private lateinit var adapter: QuestionPagerAdapter // connects questions to the view pager
     private var questions: List<QuizQuestionEntity> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
       //  Toast.makeText(this,"QuizActivity opened",Toast.LENGTH_SHORT).show()
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState) // calls parent setup
         setContentView(R.layout.activity_quiz)
         tvtimer = findViewById(R.id.tvTimer)
 
@@ -82,6 +82,7 @@ Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
             btnBefore.setOnClickListener {
                 val cur = viewPager.currentItem
                 if (cur > 0) viewPager.currentItem = cur - 1
+
             }
 
             // Next button: go forward or stay at last
@@ -191,8 +192,8 @@ private fun startTimer() {
 
     private suspend fun loadQuestionsFromDB(id: Long): List<QuizQuestionEntity> {
         return withContext(Dispatchers.IO) {
-        val userId = FirebaseAuth.getInstance().currentUser?.uid
-            ?: throw IllegalStateException("User not logged in")
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        //    ?: throw IllegalStateException("User not logged in")
 
             val db = AppDatabase.getDatabase(this@QuizActivity)
             db.quizDao().getQuestionsForQuiz(
