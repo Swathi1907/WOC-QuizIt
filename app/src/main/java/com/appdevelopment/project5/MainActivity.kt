@@ -320,6 +320,7 @@ Log.d("GEMINI_RAW",response.body().toString())
                 }
 
 //  Save to Room
+
                 val quizId = System.currentTimeMillis()
 //
 
@@ -363,6 +364,7 @@ Log.d("GEMINI_RAW",response.body().toString())
                     Intent(this@MainActivity, QuizActivity::class.java)
                         .putExtra("QUIZ_ID", quizId)
                         .putExtra("TIME_LIMIT",timeinminutes)
+                        .putExtra("difficulty",selectedDifficulty)
                 )
 
 

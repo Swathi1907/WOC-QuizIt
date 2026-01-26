@@ -1,62 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/homepage"
         android:scaleType="centerCrop" />
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-  >
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="367dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginBottom="40dp"
-        android:paddingStart="60dp"
-        android:text="Good to see you again! "
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="164dp" />
-    <EditText
-        android:id="@+id/etusername"
-        android:layout_width="355dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/mainxml"
-        android:hint="Username"
-        android:textColorHint="#999"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="352dp" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="367dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginBottom="40dp"
+            android:paddingStart="60dp"
+            android:text="Good to see you again! "
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="55dp"
+            tools:layout_editor_absoluteY="164dp" />
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="355dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/mainxml"
-        android:hint="Password"
+        <EditText
+            android:id="@+id/etusername"
+            android:layout_width="355dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/mainxml"
+            android:hint="Username"
+            android:textColorHint="#999"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="23dp"
+            tools:layout_editor_absoluteY="352dp" />
 
-        android:textColor="@color/black"
-        android:textColorHint="#999"
-        tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="416dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="355dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/mainxml"
+                android:hint="Password"
+
+                android:textColor="@color/black"
+                android:textColorHint="#999"
+                tools:layout_editor_absoluteX="22dp"
+                tools:layout_editor_absoluteY="416dp" />
+
+
+            <ImageView
+                android:id="@+id/ivTogglePassword"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:contentDescription="Toggle password"
+                android:padding="4dp"
+                android:src="@drawable/ic_eyeclosed"
+                app:tint="@android:color/black" />
+        </RelativeLayout>
+
+
 
     <Button
         android:id="@+id/btnNext"
@@ -67,6 +89,7 @@
         android:backgroundTint="#14B8A6"
         android:textColor="#FFFFFF"
         android:text="Next..."
+        android:textSize="17dp"
         tools:layout_editor_absoluteX="292dp"
         tools:layout_editor_absoluteY="565dp" />
 

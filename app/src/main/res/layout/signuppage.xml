@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -71,7 +71,9 @@
         android:textColor="@color/black"
         tools:layout_editor_absoluteX="22dp"
         tools:layout_editor_absoluteY="416dp" />
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="352dp"
@@ -84,6 +86,19 @@
         tools:layout_editor_absoluteX="22dp"
         tools:layout_editor_absoluteY="483dp" />
 
+    <ImageView
+        android:id="@+id/ivTogglePassword"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="Toggle password"
+        android:padding="4dp"
+        android:src="@drawable/ic_eyeclosed"
+        app:tint="@android:color/black" />
+</RelativeLayout>
+
     <Button
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
@@ -92,6 +107,7 @@
         android:layout_marginRight="10dp"
         android:backgroundTint="#14B8A6"
         android:text="Next..."
+        android:textSize="17dp"
         android:textColor="#FFFFFF"
         tools:layout_editor_absoluteX="292dp"
         tools:layout_editor_absoluteY="565dp" />

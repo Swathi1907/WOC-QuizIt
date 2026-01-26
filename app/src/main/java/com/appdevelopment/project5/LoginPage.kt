@@ -2,9 +2,12 @@ package com.appdevelopment.project5
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -25,6 +28,28 @@ class LoginPage : AppCompatActivity() {
 
       etUsername = findViewById(R.id.etusername)
         etPassword = findViewById(R.id.etPassword)
+        val ivTogglePassword = findViewById<ImageView>(R.id.ivTogglePassword)
+
+        var isPasswordVisible = false
+
+        ivTogglePassword.setOnClickListener{
+            if (isPasswordVisible) {
+                // Hide password
+                etPassword.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
+                ivTogglePassword.setImageResource(R.drawable.ic_eyeclosed)
+            } else {
+                // Show password
+                etPassword.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+                ivTogglePassword.setImageResource(R.drawable.ic_eye)
+            }
+
+            // Move cursor to end
+            etPassword.setSelection(etPassword.text.length)
+
+            isPasswordVisible = !isPasswordVisible
+        }
         btnLogin = findViewById(R.id.btnNext)
 
         btnLogin.setOnClickListener {

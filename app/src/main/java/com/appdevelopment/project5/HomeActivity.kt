@@ -2,6 +2,7 @@ package com.appdevelopment.project5
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.appdevelopment.project5.room.AppDatabase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -34,7 +36,7 @@ val btnAttemptedQuizzes = findViewById<Button>(R.id.btnAttemptedQuizzes)
 //
         val user = FirebaseAuth.getInstance().currentUser
         val username = user?.displayName?: "Champ"
-        tvgreetings.text = "Hello, $username! "
+        tvgreetings.text = "Hello, $username\uD83D\uDC4B "
 profile.setOnClickListener {
     val intent = Intent(this, ProfileActivity::class.java)
     startActivity(intent)
@@ -71,6 +73,22 @@ btnAttemptedQuizzes.setOnClickListener {
                             openQuizReview(quizId)}
                 }
             }
+            val uid = FirebaseAuth.getInstance().currentUser!!.uid
+            FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(uid)
+                .collection("pastQuizzes")
+                .orderBy("timestamp")
+                .get()
+                .addOnSuccessListener { snapshot ->
+                    for (doc in snapshot.documents) {
+                        val score = doc.getLong("score")
+                        val total = doc.getLong("totalQuestions")
+                        val time = doc.getLong("timestamp")
+
+                        Log.d("QUIZ_HISTORY", "$score / $total at $time")
+                    }
+                }
         }
     private fun openQuizReview(quizId: Long){
         val intent = Intent(this,QuizReviewActivity::class.java)

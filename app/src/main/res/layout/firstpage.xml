@@ -59,15 +59,15 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="134dp"
+        android:layout_width="150dp"
         android:layout_height="62dp"
-        android:textSize="15dp"
-        android:layout_marginLeft="220dp"
+        android:layout_marginLeft="210dp"
         android:layout_marginTop="670dp"
         android:layout_marginRight="40dp"
         android:backgroundTint="#14B8A6"
         android:text="Login"
         android:textColor="#FFFFFF"
+        android:textSize="21dp"
         tools:layout_editor_absoluteX="286dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -81,10 +81,10 @@
         android:paddingLeft="35dp"/>
     <Button
         android:id="@+id/btnSignUp"
-       android:textSize="15dp"
+       android:textSize="21dp"
         android:layout_width="153dp"
         android:layout_height="59dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="670dp"
         android:backgroundTint="#14B8A6"
         android:text="Sign Up"

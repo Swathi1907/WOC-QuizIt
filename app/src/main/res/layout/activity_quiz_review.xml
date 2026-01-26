@@ -6,20 +6,20 @@
     android:orientation="vertical"
     android:background = "@drawable/bluerectangle"
 
-    android:padding="12dp">
+    >
 
     <TextView
         android:layout_width="159dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-
+        android:layout_marginTop="49dp"
+android:layout_marginBottom="10dp"
         android:text="Quiz Review "
         android:textColor="@color/white"
         android:textSize="22sp"
         android:paddingStart="10dp"
         android:textStyle="bold" />
 
-    <TextView
+ <!--   <TextView
         android:layout_width="353dp"
         android:layout_height="wrap_content"
 
@@ -28,7 +28,7 @@
         android:text="Scroll down for more questions "
         android:textColor="@color/white"
         android:textSize="22sp"
-        android:textStyle="normal" />
+        android:textStyle="normal" /> -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvReview"

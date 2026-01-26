@@ -18,110 +18,117 @@
         android:paddingTop="59dp"
         android:text="Profile Details"
         android:textColor="@color/white"
+
         android:textSize="25dp"
-        android:textStyle="normal" />
+        android:textStyle="bold" />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView3"
         android:layout_width="147dp"
         android:layout_height="195dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="130dp"
         android:layout_marginTop="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/boyandgirl" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/profilepage"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="50dp"
-    android:layout_marginRight="10dp"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="PERSONAL INFO"
-        android:paddingLeft="120dp"
-        android:paddingTop="20dp"
-        android:textSize="17dp"
-        android:textStyle="bold"/>
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="16dp"
-        android:orientation="horizontal">
+        android:layout_width="370dp"
+        android:layout_height="221dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/profilepage"
+
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/heading1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="39dp"
-            android:text="Username: "
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="297dp" />
-    <TextView
-          android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:text="Username"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="297dp" />
-</LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
-        android:paddingLeft="16dp">
-
-        <TextView
-            android:id="@+id/Heading2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:text="Email Id: "
-            android:textColor="@color/black"
-
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUsername" />
-
-        <TextView
-            android:id="@+id/tvEmailid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:maxLines="2"
-            android:text="email@example.com"
+            android:paddingLeft="120dp"
+            android:paddingTop="20dp"
+            android:text="PERSONAL INFO"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp">
+
+            <TextView
+                android:id="@+id/heading1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:text="Username: "
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="297dp" />
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:text="Username"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="297dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp">
+
+            <TextView
+                android:id="@+id/Heading2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:text="Email Id: "
+                android:textColor="@color/black"
+
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.075"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+
+            <TextView
+                android:id="@+id/tvEmailid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:maxLines="2"
+                android:text="email@example.com"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.075"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
     <Button
         android:id="@+id/btnlogOut"
         android:layout_width="118dp"
         android:layout_height="59dp"
         android:layout_marginLeft="145dp"
         android:layout_marginTop="50dp"
-        android:backgroundTint="#14B8A6"
+        android:backgroundTint="#C62828"
         android:text="Log Out"
         android:textColor="#FFFFFF" />
 

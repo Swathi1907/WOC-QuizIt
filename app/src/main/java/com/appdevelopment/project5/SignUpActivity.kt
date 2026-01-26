@@ -1,9 +1,11 @@
 package com.appdevelopment.project5
-
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -19,11 +21,32 @@ class SignUpActivity: AppCompatActivity() {
       //  val auth = FirebaseAuth.getInstance()
         val db = FirebaseFirestore.getInstance()
         val etusername = findViewById<EditText>(R.id.etUsername)
-
         val etemail = findViewById<EditText>(R.id.etEmail)
+
         val etpassword = findViewById<EditText>(R.id.etPassword)
         val btnNext = findViewById<Button>(R.id.btnNext)
+        val ivTogglePassword = findViewById<ImageView>(R.id.ivTogglePassword)
 
+        var isPasswordVisible = false
+
+        ivTogglePassword.setOnClickListener{
+            if (isPasswordVisible) {
+                // Hide password
+                etpassword.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
+                ivTogglePassword.setImageResource(R.drawable.ic_eyeclosed)
+            } else {
+                // Show password
+                etpassword.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+                ivTogglePassword.setImageResource(R.drawable.ic_eye)
+            }
+
+            // Move cursor to end
+            etpassword.setSelection(etpassword.text.length)
+
+            isPasswordVisible = !isPasswordVisible
+        }
         btnNext.setOnClickListener {
 
 

@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.appdevelopment.project5.room.QuizResultEntity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class QuizActivity : AppCompatActivity() {
 
@@ -33,6 +34,8 @@ private var countDownTimer: CountDownTimer? = null
 //
     private var timeLimitMillis: Long = 0L
 
+private  var selectedDifficulty: String = "MEDIUM"
+
     private var quizId: Long = 0L
     private lateinit var adapter: QuestionPagerAdapter // connects questions to the view pager
     private var questions: List<QuizQuestionEntity> = emptyList()
@@ -42,7 +45,7 @@ private var countDownTimer: CountDownTimer? = null
         super.onCreate(savedInstanceState) // calls parent setup
         setContentView(R.layout.activity_quiz)
         tvtimer = findViewById(R.id.tvTimer)
-
+        val difficulty = intent.getStringExtra("selectedDifficulty")?:"MEDIUM"
         val timeLimitMinutes = intent.getIntExtra("TIME_LIMIT", 5)
         timeLimitMillis = timeLimitMinutes * 60 * 1000L
 Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
@@ -103,7 +106,15 @@ lifecycleScope.launch(Dispatchers.IO) {
         score = score,
         totalQuestions = adapter.itemCount,
         userId = userId,
+difficulty = selectedDifficulty,
+    )
+    val score = adapter.calculateScore()
 
+    saveQuizResultToFirestore(
+        quizId = quizId,
+        score = score,
+        total = adapter.itemCount,
+        difficulty = selectedDifficulty,
     )
     AppDatabase.getDatabase(this@QuizActivity)
         .quizResultDao()
@@ -127,11 +138,12 @@ countDownTimer?.cancel()
                 btnSubmit.isEnabled = false
                 btnNext.isEnabled = false
                 btnBefore.isEnabled = false
+
             }
 
         }
     }
-//
+
     // helper to load questions from Room on IO dispatcher
 private fun startTimer() {
     countDownTimer = object : CountDownTimer(timeLimitMillis, 1000) {
@@ -143,6 +155,7 @@ private fun startTimer() {
                 "Time Left: %02d:%02d",
                 minutes,
                 seconds
+
             )
         }
 
@@ -162,12 +175,18 @@ private fun startTimer() {
                 score = score,
                 totalQuestions = adapter.itemCount,
                 userId = userId,
-
+difficulty = selectedDifficulty
             )
             AppDatabase.getDatabase(this@QuizActivity)
                 .quizResultDao()
                 .insertResult(result)
         }
+        saveQuizResultToFirestore(
+            quizId = quizId,
+            score = score,
+            total = adapter.itemCount,
+            difficulty = selectedDifficulty,
+        )
 
         AlertDialog.Builder(this)
             .setTitle("Time Up!")
@@ -201,5 +220,34 @@ private fun startTimer() {
                 userId = userId
             )
         }
+    }
+    private fun saveQuizResultToFirestore(
+        quizId: Long,
+        score: Int,
+        total: Int,
+      difficulty: String,
+    ) {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+
+        val quizData = hashMapOf(
+            "quizId" to quizId,
+            "score" to score,
+            "totalQuestions" to total,
+            "timestamp" to System.currentTimeMillis(),
+           "difficulty" to selectedDifficulty,
+        )
+
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(uid)
+            .collection("pastQuizzes")
+            .document(quizId.toString())
+            .set(quizData)
+            .addOnSuccessListener {
+                Log.d("FIRESTORE", "Quiz saved successfully")
+            }
+            .addOnFailureListener { e ->
+                Log.e("FIRESTORE", "Failed to save quiz", e)
+            }
     }
 }
