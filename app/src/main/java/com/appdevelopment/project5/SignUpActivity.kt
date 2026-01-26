@@ -29,6 +29,7 @@ class SignUpActivity: AppCompatActivity() {
 
         var isPasswordVisible = false
 
+
         ivTogglePassword.setOnClickListener{
             if (isPasswordVisible) {
                 // Hide password

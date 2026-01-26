@@ -37,7 +37,8 @@ val ettimer = findViewById<EditText>(R.id.ettimer)
                 return@setOnClickListener
             }
 
-            val intent = Intent(this, MainActivity::class.java)
+            val
+                    intent = Intent(this, MainActivity::class.java)
          ////
             // intent.putExtra("Quiz Title",quiztitle)
                 intent.putExtra("count", selectedCount)

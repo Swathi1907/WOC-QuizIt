@@ -50,6 +50,7 @@ private  var selectedDifficulty: String = "MEDIUM"
         timeLimitMillis = timeLimitMinutes * 60 * 1000L
 Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
         startTimer()
+
         // findViewById for all views
         viewPager = findViewById(R.id.viewPagerQuestions)
         btnBefore = findViewById(R.id.btnBefore)
