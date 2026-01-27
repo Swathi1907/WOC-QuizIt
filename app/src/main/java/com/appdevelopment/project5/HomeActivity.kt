@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.appdevelopment.project5.room.AppDatabase
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -20,36 +21,58 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HomeActivity : AppCompatActivity() {
- lateinit var pvQuizzes: RecyclerView
+  //  lateinit var pvQuizzes: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-       // Toast.makeText(this, "HomeActivity opened", Toast.LENGTH_SHORT).show()
+        // Toast.makeText(this, "HomeActivity opened", Toast.LENGTH_SHORT).show()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-val btnAttemptedQuizzes = findViewById<Button>(R.id.btnAttemptedQuizzes)
+      //  val btnAttemptedQuizzes = findViewById<Button>(R.id.btnAttemptedQuizzes)
         val tvgreetings = findViewById<TextView>(R.id.tvgreetings)
         val btnCreateQuiz = findViewById<Button>(R.id.btnCreateQuiz)
-        pvQuizzes = findViewById<RecyclerView>(R.id.PastQuizzes) //pv=previous
-          val profile = findViewById<ImageView>(R.id.imageView2)
+     //   pvQuizzes = findViewById<RecyclerView>(R.id.PastQuizzes) //pv=previous
+        val profile = findViewById<ImageView>(R.id.imageView2)
         val btnPerformances = findViewById<Button>(R.id.btnPerformances)
-        pvQuizzes.layoutManager = LinearLayoutManager(this)
+      //  pvQuizzes.layoutManager = LinearLayoutManager(this)
 //
         val user = FirebaseAuth.getInstance().currentUser
-        val username = user?.displayName?: "Champ"
+        val username = user?.displayName ?: "Champ"
         tvgreetings.text = "Hello, $username\uD83D\uDC4B "
-profile.setOnClickListener {
-    val intent = Intent(this, ProfileActivity::class.java)
-    startActivity(intent)
-}
-btnAttemptedQuizzes.setOnClickListener {
+      //  profile.setOnClickListener {
+        //    val intent = Intent(this, ProfileActivity::class.java)
+          //  startActivity(intent)
+        //}
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+
+                R.id.nav_home -> {
+                    true
+                }
+
+                R.id.nav_past -> {
+                    startActivity(Intent(this, PastQuizzesActivity::class.java))
+
+                    true
+                }
+
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+
+                else -> false
+            }
+        }
+       // btnAttemptedQuizzes.setOnClickListener {
 
 
+         //   loadingQuizResults()
+        //}
+        btnPerformances.setOnClickListener {
 
-    loadingQuizResults()
-}
-        btnPerformances.setOnClickListener{
-
-            startActivity(Intent(this,PerformanceActivity::class.java))
+            startActivity(Intent(this, PerformanceActivity::class.java))
         }
         btnCreateQuiz.setOnClickListener {
 //
@@ -58,7 +81,7 @@ btnAttemptedQuizzes.setOnClickListener {
         }
     }
 
-        private fun loadingQuizResults() {
+    /* private fun loadingQuizResults() {
             lifecycleScope.launch {
                 val results = withContext(Dispatchers.IO) {
                     val userId = FirebaseAuth.getInstance().currentUser!!.uid
@@ -72,7 +95,8 @@ btnAttemptedQuizzes.setOnClickListener {
                     pvQuizzes.adapter = QuizResultAdapter(results) { quizId ->
                             openQuizReview(quizId)}
                 }
-            }
+
+}
             val uid = FirebaseAuth.getInstance().currentUser!!.uid
             FirebaseFirestore.getInstance()
                 .collection("users")
@@ -89,7 +113,7 @@ btnAttemptedQuizzes.setOnClickListener {
                         Log.d("QUIZ_HISTORY", "$score / $total at $time")
                     }
                 }
-        }
+        } */
     private fun openQuizReview(quizId: Long){
         val intent = Intent(this,QuizReviewActivity::class.java)
         intent.putExtra("QUIZ_ID",quizId)

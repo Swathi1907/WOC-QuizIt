@@ -1,5 +1,6 @@
 package com.appdevelopment.project5
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -19,6 +20,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class PerformanceActivity : AppCompatActivity() {
@@ -41,7 +43,31 @@ class PerformanceActivity : AppCompatActivity() {
             if (results.isNotEmpty()) {
                 setupChart(barChart, results)
             }
-        }
+
+            val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
+            bottomNav.setOnItemSelectedListener { item ->
+                when (item.itemId) {
+
+                    R.id.nav_home -> {
+                        startActivity(Intent(this@PerformanceActivity, HomeActivity::class.java))
+                        true
+                    }
+
+                    R.id.nav_past -> {
+                        startActivity(Intent(this@PerformanceActivity, PastQuizzesActivity::class.java))
+
+                        true
+                    }
+
+                    R.id.nav_profile -> {
+                       startActivity(Intent(this@PerformanceActivity, ProfileActivity::class.java))
+                        true
+                    }
+
+                    else -> false
+                }
+            }   }
     }
 //
 private fun setupChart(

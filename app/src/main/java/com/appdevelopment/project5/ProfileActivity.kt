@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.appdevelopment.project5.room.AppDatabase
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +33,32 @@ FirebaseAuth.getInstance().signOut()
               Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
        }
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+
+                R.id.nav_profile -> {
+
+                    true
+                }
+
+                R.id.nav_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+
+                R.id.nav_past -> {
+                    startActivity(Intent(this, PastQuizzesActivity::class.java))
+
+                    true
+                }
+
+
+
+                else -> false
+            }
+        }
        // val uid = FirebaseAuth.getInstance().currentUser!!.uid
 val auth = FirebaseAuth.getInstance()
         val user = auth.currentUser

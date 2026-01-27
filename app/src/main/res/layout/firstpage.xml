@@ -67,7 +67,7 @@
         android:backgroundTint="#14B8A6"
         android:text="Login"
         android:textColor="#FFFFFF"
-        android:textSize="21dp"
+        android:textSize="18dp"
         tools:layout_editor_absoluteX="286dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -81,7 +81,7 @@
         android:paddingLeft="35dp"/>
     <Button
         android:id="@+id/btnSignUp"
-       android:textSize="21dp"
+       android:textSize="18dp"
         android:layout_width="153dp"
         android:layout_height="59dp"
         android:layout_marginLeft="40dp"

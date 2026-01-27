@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.math.cosh
 
 class QuizSetUpActivity : AppCompatActivity() {
@@ -16,35 +17,60 @@ class QuizSetUpActivity : AppCompatActivity() {
         val count = findViewById<EditText>(R.id.etQuestionCount)
         val difficulty = findViewById<Spinner>(R.id.spDifficulty)
         val btnNext2 = findViewById<Button>(R.id.btnNext2)
-val ettimer = findViewById<EditText>(R.id.ettimer)
-      //  val etquiztitle = findViewById<EditText>(R.id.etquiztitle)
+        val ettimer = findViewById<EditText>(R.id.ettimer)
+        //  val etquiztitle = findViewById<EditText>(R.id.etquiztitle)
+
 
         btnNext2.setOnClickListener {
-       //     val quiztitle = etquiztitle.text.toString().trim()
+            //     val quiztitle = etquiztitle.text.toString().trim()
             val selectedtime = ettimer.text.toString().trim().toIntOrNull()
             val selectedCount = count.text.toString().trim().toIntOrNull()
             val selectedDifficulty = difficulty.selectedItem.toString()
-            if( selectedDifficulty.isEmpty() || selectedtime == null || selectedCount==null ){
-                Toast.makeText(this,"Fill all the Fields", Toast.LENGTH_SHORT).show()
+            if (selectedDifficulty.isEmpty() || selectedtime == null || selectedCount == null) {
+                Toast.makeText(this, "Fill all the Fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if(selectedtime == null || selectedtime<=0){
-                Toast.makeText(this,"Enter a valid time ", Toast.LENGTH_SHORT).show()
+            if (selectedtime == null || selectedtime <= 0) {
+                Toast.makeText(this, "Enter a valid time ", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if(selectedCount == null ||selectedCount<=0){
-                Toast.makeText(this,"Enter a valid question count ", Toast.LENGTH_SHORT).show()
+            if (selectedCount == null || selectedCount <= 0) {
+                Toast.makeText(this, "Enter a valid question count ", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val
                     intent = Intent(this, MainActivity::class.java)
-         ////
+            ////
             // intent.putExtra("Quiz Title",quiztitle)
-                intent.putExtra("count", selectedCount)
+            intent.putExtra("count", selectedCount)
             intent.putExtra("difficulty", selectedDifficulty)
-               intent.putExtra("TIME_LIMIT",selectedtime)
+            intent.putExtra("TIME_LIMIT", selectedtime)
             startActivity(intent)
+        }
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+
+                R.id.nav_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+
+                R.id.nav_past -> {
+                    startActivity(Intent(this, PastQuizzesActivity::class.java))
+
+                    true
+                }
+
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+
+                else -> false
+            }
         }
     }
 }

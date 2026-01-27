@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+    android:background="@drawable/homepage2"
+
+android:layout_height="match_parent">
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/PastQuizzes"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout> -->
 <LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical"
+android:layout_width="match_parent"
+    android:background="@drawable/homepage2"
+android:layout_height="match_parent">
+
+<!-- Title -->
+<TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:text="Past Quizzes"
+    android:textSize="22sp"
+    android:textColor="@color/black"
+    android:paddingStart="110dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="60dp"
+    android:textStyle="bold"
+    android:padding="16dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/PastQuizzes"
-        android:layout_width="match_parent"
-        android:layout_height="355dp"
-        android:layout_weight="1" />
+<!-- RecyclerView -->
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/PastQuizzes"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"/>
+
+<!-- Bottom Nav -->
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottomNavigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:itemIconTint="@color/black"
+    app:itemTextColor="@color/black"
+    android:background="@color/white"
+    app:menu="@menu/bottom_nav_menu"/>
 </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>

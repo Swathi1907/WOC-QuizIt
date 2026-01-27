@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/quiz"
+    android:background="@drawable/homepage2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,12 +20,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-android:layout_marginLeft="125sp"
+android:layout_marginLeft="120sp"
 
             android:layout_marginBottom="2dp"
-            android:paddingTop="20dp"
+            android:paddingTop="45dp"
             android:text="Quiz"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="29sp"
             android:textStyle="bold" />
 
@@ -38,7 +38,7 @@ android:layout_marginLeft="125sp"
 android:layout_marginLeft="5sp"
 
             android:text="Time Left: 00:00"
-            android:textColor="@android:color/holo_orange_light"
+            android:textColor="@android:color/holo_red_dark"
             android:textSize="20sp"
             android:textStyle="bold" />
 

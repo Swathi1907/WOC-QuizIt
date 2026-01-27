@@ -34,6 +34,7 @@ import com.appdevelopment.project5.parser.JsonQuizParser
 import com.appdevelopment.project5.parser.RegexQuizParser
 import com.appdevelopment.project5.room.AppDatabase
 import com.appdevelopment.project5.room.QuizQuestionEntity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.mlkit.vision.text.TextRecognizer
 import kotlinx.coroutines.tasks.await
@@ -71,6 +72,30 @@ timeinminutes = intent.getIntExtra("TIME_LIMIT",5)
         if (selectedCount <= 0) {
             Toast.makeText(this, "Invalid question count", Toast.LENGTH_SHORT).show()
             return
+        }
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_past -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+
+                R.id.nav_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+
+
+
+
+                else -> false
+            }
         }
         btnGenerateAI.setOnClickListener {
             Log.d("QuizSetUpActivity","count=$selectedCount , difficulty=$selectedDifficulty")

@@ -203,6 +203,7 @@ difficulty = selectedDifficulty
             .show()
 
         disableButtons()
+        saveQuestionsToFirestore(quizId,questions)
     }
     private fun disableButtons(){
         btnSubmit.isEnabled = false
@@ -220,6 +221,32 @@ difficulty = selectedDifficulty
                 id,
                 userId = userId
             )
+        }
+    }
+    private fun saveQuestionsToFirestore(
+        quizId: Long,
+        questions: List<QuizQuestionEntity>
+    ) {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val db = FirebaseFirestore.getInstance()
+
+        val quizRef = db.collection("users")
+            .document(uid)
+            .collection("pastQuizzes")
+            .document(quizId.toString())
+
+        questions.forEachIndexed { index, q ->
+            val questionData = hashMapOf(
+                "question" to q.question,
+                "options" to listOf(q.optionA, q.optionB, q.optionC, q.optionD),
+                "correctAnswer" to q.correctAnswer,
+                "explanation" to q.explanation,
+                "userAnswer" to q.selectedOption
+            )
+
+            quizRef.collection("questions")
+                .document("q${index + 1}")
+                .set(questionData)
         }
     }
     private fun saveQuizResultToFirestore(
