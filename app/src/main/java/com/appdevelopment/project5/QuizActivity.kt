@@ -20,9 +20,9 @@ import kotlinx.coroutines.withContext
 import com.appdevelopment.project5.room.QuizResultEntity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
 class QuizActivity : AppCompatActivity() {
-
     private lateinit var viewPager: ViewPager2
     private lateinit var btnBefore: Button
     private lateinit var btnNext: Button
@@ -31,9 +31,7 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var quiztitle: String
 private lateinit var tvtimer: TextView
 private var countDownTimer: CountDownTimer? = null
-//
     private var timeLimitMillis: Long = 0L
-
 private  var selectedDifficulty: String = "MEDIUM"
 
     private var quizId: Long = 0L
@@ -44,20 +42,21 @@ private  var selectedDifficulty: String = "MEDIUM"
       //  Toast.makeText(this,"QuizActivity opened",Toast.LENGTH_SHORT).show()
         super.onCreate(savedInstanceState) // calls parent setup
         setContentView(R.layout.activity_quiz)
+
         tvtimer = findViewById(R.id.tvTimer)
         val difficulty = intent.getStringExtra("selectedDifficulty")?:"MEDIUM"
         val timeLimitMinutes = intent.getIntExtra("TIME_LIMIT", 5)
         timeLimitMillis = timeLimitMinutes * 60 * 1000L
 Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
         startTimer()
-
         // findViewById for all views
         viewPager = findViewById(R.id.viewPagerQuestions)
         btnBefore = findViewById(R.id.btnBefore)
+
         btnNext = findViewById(R.id.btnNext)
+
         btnSubmit = findViewById(R.id.btnSubmit)
         tvTitle = findViewById<TextView>(R.id.tvQuizTitle)
-
         // get quiz id passed from MainActivity
         quizId = intent.getLongExtra("QUIZ_ID", 0L)
 
@@ -74,7 +73,7 @@ Log.d("QuizSetUpActivity","time = $timeLimitMinutes")
                     .show()
                 return@launch
             }
-
+          //  saveQuestionsToFirestore(quizId,questions)
             // optionally set title to show number of questions
             tvTitle.text = "Quiz - ${questions.size}Q's"
 
@@ -117,6 +116,7 @@ difficulty = selectedDifficulty,
         total = adapter.itemCount,
         difficulty = selectedDifficulty,
     )
+    saveQuestionsToFirestore(quizId,questions)
     AppDatabase.getDatabase(this@QuizActivity)
         .quizResultDao()
         .insertResult(result)
@@ -140,6 +140,7 @@ countDownTimer?.cancel()
                 btnNext.isEnabled = false
                 btnBefore.isEnabled = false
 
+
             }
 
         }
@@ -156,7 +157,6 @@ private fun startTimer() {
                 "Time Left: %02d:%02d",
                 minutes,
                 seconds
-
             )
         }
 
@@ -168,7 +168,6 @@ private fun startTimer() {
 }
     private fun submitQuizAutomatically() {
         val score = adapter.calculateScore()
-
         lifecycleScope.launch(Dispatchers.IO) {
             val userId = FirebaseAuth.getInstance().currentUser!!.uid
             val result = QuizResultEntity(
@@ -182,13 +181,14 @@ difficulty = selectedDifficulty
                 .quizResultDao()
                 .insertResult(result)
         }
+
         saveQuizResultToFirestore(
             quizId = quizId,
             score = score,
             total = adapter.itemCount,
             difficulty = selectedDifficulty,
         )
-
+        saveQuestionsToFirestore(quizId,questions)
         AlertDialog.Builder(this)
             .setTitle("Time Up!")
             .setMessage("Your score: $score / ${adapter.itemCount}")
@@ -203,7 +203,8 @@ difficulty = selectedDifficulty
             .show()
 
         disableButtons()
-        saveQuestionsToFirestore(quizId,questions)
+
+
     }
     private fun disableButtons(){
         btnSubmit.isEnabled = false
@@ -213,16 +214,20 @@ difficulty = selectedDifficulty
 
     private suspend fun loadQuestionsFromDB(id: Long): List<QuizQuestionEntity> {
         return withContext(Dispatchers.IO) {
+
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
         //    ?: throw IllegalStateException("User not logged in")
-
             val db = AppDatabase.getDatabase(this@QuizActivity)
             db.quizDao().getQuestionsForQuiz(
                 id,
                 userId = userId
             )
+
         }
+
+
     }
+
     private fun saveQuestionsToFirestore(
         quizId: Long,
         questions: List<QuizQuestionEntity>
@@ -241,7 +246,8 @@ difficulty = selectedDifficulty
                 "options" to listOf(q.optionA, q.optionB, q.optionC, q.optionD),
                 "correctAnswer" to q.correctAnswer,
                 "explanation" to q.explanation,
-                "userAnswer" to q.selectedOption
+                "selectedOption" to q.selectedOption,
+
             )
 
             quizRef.collection("questions")
@@ -249,6 +255,7 @@ difficulty = selectedDifficulty
                 .set(questionData)
         }
     }
+
     private fun saveQuizResultToFirestore(
         quizId: Long,
         score: Int,
@@ -258,19 +265,21 @@ difficulty = selectedDifficulty
         val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
 
         val quizData = hashMapOf(
+
             "quizId" to quizId,
             "score" to score,
             "totalQuestions" to total,
             "timestamp" to System.currentTimeMillis(),
            "difficulty" to selectedDifficulty,
-        )
+            "userId" to uid,
 
+        )
         FirebaseFirestore.getInstance()
             .collection("users")
             .document(uid)
             .collection("pastQuizzes")
             .document(quizId.toString())
-            .set(quizData)
+            .set(quizData, SetOptions.merge())
             .addOnSuccessListener {
                 Log.d("FIRESTORE", "Quiz saved successfully")
             }

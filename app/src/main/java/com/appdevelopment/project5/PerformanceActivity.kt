@@ -22,10 +22,66 @@ import java.util.Locale
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class PerformanceActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) { //runs when activity is created
+
+
+         override fun onCreate(savedInstanceState: Bundle?) {
+             super.onCreate(savedInstanceState)
+             setContentView(R.layout.performance)
+
+             val barChart = findViewById<BarChart>(R.id.barChart)
+
+             loadPerformanceFromFirestore(barChart)
+
+             val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+             bottomNav.setOnItemSelectedListener { item ->
+                 when (item.itemId) {
+                     R.id.nav_home -> {
+                         startActivity(Intent(this, HomeActivity::class.java))
+                         true
+                     }
+                     R.id.nav_past -> {
+                         startActivity(Intent(this, PastQuizzesActivity::class.java))
+                         true
+                     }
+                     R.id.nav_profile -> {
+                         startActivity(Intent(this, ProfileActivity::class.java))
+                         true
+                     }
+                     else -> false
+                 }
+             }
+         }
+
+         private fun loadPerformanceFromFirestore(chart: BarChart) {
+             val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+
+             FirebaseFirestore.getInstance()
+                 .collection("users")
+                 .document(uid)
+                 .collection("pastQuizzes")
+                 .orderBy("timestamp")
+                 .get()
+                 .addOnSuccessListener { snapshot ->
+
+                     if (snapshot.isEmpty) return@addOnSuccessListener
+
+                     val results = snapshot.documents.map {
+                         PerformanceItem(
+                             score = it.getLong("score")?.toInt() ?: 0,
+                             totalQuestion = it.getLong("totalQuestions")?.toInt() ?: 0,
+                             timestamp = it.getLong("timestamp") ?: 0L,
+
+                         )
+                     }
+
+                     setupChart(chart, results)
+                 }
+         }
+  /*  override fun onCreate(savedInstanceState: Bundle?) { //runs when activity is created
         super.onCreate(savedInstanceState)
         setContentView(R.layout.performance)
 
@@ -37,11 +93,11 @@ class PerformanceActivity : AppCompatActivity() {
               val db=  AppDatabase.getDatabase(this@PerformanceActivity)
                 val userId = FirebaseAuth.getInstance().currentUser!!.uid ?: return@withContext emptyList()
                    db .quizResultDao()
-                    .getAllResults(userId) // fetch quiz results for this user
+                    .getAllResults(userId) // etch quiz results for this user
             }
 
             if (results.isNotEmpty()) {
-                setupChart(barChart, results)
+                setupChart(barChart, results )
             }
 
             val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
@@ -68,11 +124,11 @@ class PerformanceActivity : AppCompatActivity() {
                     else -> false
                 }
             }   }
-    }
+    } */
 //
 private fun setupChart(
     chart: BarChart,
-    results: List<QuizResultEntity>
+    results: List<PerformanceItem>
 ) {
     val entries = ArrayList<BarEntry>() // bar heights (scores)
     val dateLabels = ArrayList<String>() // x axis labels
@@ -101,7 +157,7 @@ private fun setupChart(
         override fun getBarLabel(barEntry: BarEntry?): String {
             val index = barEntry?.x?.toInt() ?: 0
             val r = results[index]
-            return "${r.score}/${r.totalQuestions}"
+            return "${r.score}/${r.totalQuestion}"
 
         }
     }
