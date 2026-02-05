@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/homepage2"
     xmlns:tools="http://schemas.android.com/tools">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
     android:orientation="vertical"
 
     android:background="@drawable/profilebackground"
@@ -30,7 +28,7 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/profile"
         android:layout_width="147dp"
         android:layout_height="195dp"
         android:layout_marginLeft="130dp"
@@ -39,24 +37,55 @@
         android:src="@drawable/boyandgirl" />
 
     <LinearLayout
-        android:layout_width="370dp"
-        android:layout_height="221dp"
+        android:layout_width="378dp"
+        android:layout_height="247dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/profilepage"
 
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="120dp"
-            android:paddingTop="20dp"
-            android:text="PERSONAL INFO"
-            android:textColor="@color/black"
-            android:textSize="17dp"
-            android:textStyle="bold" />
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp">
+
+            <TextView
+                android:layout_width="251dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="PERSONAL INFO"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+            <!--   <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:paddingLeft="16dp">
+           <TextView
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:text="✏️)"
+
+                android:id="@+id/edit"
+                android:textSize="20dp"
+                android:paddingStart="20dp"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+            </LinearLayout> -->
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,8 +97,8 @@
             <TextView
                 android:id="@+id/heading1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
                 android:text="Username: "
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -77,17 +106,37 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="297dp" />
 
-            <TextView
-                android:id="@+id/tvUsername"
+            <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
-                android:text="Username"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="297dp" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="Username"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="297dp" />
+
+                <EditText
+                    android:id="@+id/etusername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    android:visibility="gone"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="297dp" />
+            </FrameLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -110,7 +159,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.075"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+                app:layout_constraintTop_toBottomOf="@id/etUsername" />
 
             <TextView
                 android:id="@+id/tvEmailid"
@@ -125,8 +174,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.075"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+                app:layout_constraintTop_toBottomOf="@id/etUsername" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="366dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shape1"
+            app:backgroundTint="#0F766E"
+            android:text="Update Profile" />
     </LinearLayout>
     <Button
         android:id="@+id/btnlogOut"

@@ -22,12 +22,12 @@
         android:id="@+id/textView4"
         android:layout_width="385dp"
         android:layout_height="41dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginBottom="15dp"
         android:text ="Create Account"
         android:textColor="@color/white"
-        android:textSize="29sp"
-        android:paddingStart="90dp"
+        android:textSize="35sp"
+      android:layout_marginLeft="60dp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="55dp"
         tools:layout_editor_absoluteY="164dp" />
@@ -48,71 +48,96 @@
 
     <EditText
         android:id="@+id/etUsername"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="336dp"
+        android:layout_height="57dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/mainxml"
         android:hint="User Name"
-        android:textColorHint="#999"
         android:textColor="@color/black"
+        android:textColorHint="#999"
         tools:layout_editor_absoluteX="23dp"
         tools:layout_editor_absoluteY="352dp" />
 
 
-
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="336dp"
+        android:layout_height="57dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/mainxml"
         android:hint="Email Id"
-        android:textColorHint="#999"
         android:textColor="@color/black"
+        android:textColorHint="#999"
         tools:layout_editor_absoluteX="22dp"
         tools:layout_editor_absoluteY="416dp" />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="352dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/mainxml"
-        android:hint="Password"
-        android:textColorHint="#999"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="483dp" />
 
-    <ImageView
-        android:id="@+id/ivTogglePassword"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:contentDescription="Toggle password"
-        android:padding="4dp"
-        android:src="@drawable/ic_eyeclosed"
-        app:tint="@android:color/black" />
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="357dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="336dp"
+            android:layout_height="57dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/mainxml"
+            android:hint="Password"
+            android:textColor="@color/black"
+            android:textColorHint="#999"
+            tools:layout_editor_absoluteX="22dp"
+            tools:layout_editor_absoluteY="483dp" />
+
+        <ImageView
+            android:id="@+id/ivTogglePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Toggle password"
+            android:padding="4dp"
+            android:src="@drawable/ic_eyeclosed"
+            app:tint="@android:color/black" />
+    </RelativeLayout>
 
 
     <Button
         android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="240dp"
         android:layout_marginRight="10dp"
         android:backgroundTint="#14B8A6"
         android:text="Next..."
-        android:textSize="17dp"
         android:textColor="#FFFFFF"
+        android:textSize="17dp"
         tools:layout_editor_absoluteX="292dp"
         tools:layout_editor_absoluteY="565dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30sp"
+        android:orientation="horizontal">
+<TextView
+    android:layout_width="match_parent"
+android:textColor="@color/white"
+    android:textSize="18sp"
+    android:layout_height="wrap_content"
+    android:text="Already have an account? "/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login "
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/login"
+            android:textColor="@android:color/holo_orange_dark"/>
 
-
+    </LinearLayout>
 </LinearLayout>
 </FrameLayout>

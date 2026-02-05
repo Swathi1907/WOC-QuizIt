@@ -22,7 +22,10 @@ import kotlinx.coroutines.withContext
 
 class HomeActivity : AppCompatActivity() {
   //  lateinit var pvQuizzes: RecyclerView
-
+  override fun onResume() {
+      super.onResume()
+      loadUsername()
+  }
     override fun onCreate(savedInstanceState: Bundle?) {
         // Toast.makeText(this, "HomeActivity opened", Toast.LENGTH_SHORT).show()
         super.onCreate(savedInstanceState)
@@ -118,5 +121,21 @@ class HomeActivity : AppCompatActivity() {
         val intent = Intent(this,QuizReviewActivity::class.java)
         intent.putExtra("QUIZ_ID",quizId)
         startActivity(intent)
+    }
+    private fun loadUsername() {
+        val user = FirebaseAuth.getInstance().currentUser ?: return
+        val uid = user.uid
+
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(uid)
+            .get()
+            .addOnSuccessListener { doc ->
+                if (doc.exists()) {
+                    val username = doc.getString("username") ?: "User"
+                    findViewById<TextView>(R.id.tvgreetings).text =
+                        "Hello, $username 👋"
+                }
+            }
     }
     }

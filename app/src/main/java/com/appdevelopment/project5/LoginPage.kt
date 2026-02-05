@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -15,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginPage : AppCompatActivity() {
 
-    private lateinit var etUsername: EditText
+    private lateinit var etemail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
 
@@ -26,12 +27,41 @@ class LoginPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.loginpage)
 
-      etUsername = findViewById(R.id.etusername)
+      etemail = findViewById(R.id.etemail)
         etPassword = findViewById(R.id.etPassword)
         val ivTogglePassword = findViewById<ImageView>(R.id.ivTogglePassword)
-
+val btnsignup = findViewById<TextView>(R.id.signup)
         var isPasswordVisible = false
+btnsignup.setOnClickListener {
+    startActivity(Intent(this, SignUpActivity::class.java))
+}
+        val tvForgotPassword = findViewById<TextView>(R.id.forgot)
 
+        tvForgotPassword.setOnClickListener {
+            val email = etemail.text.toString().trim()
+
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Enter your email first", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            FirebaseAuth.getInstance()
+                .sendPasswordResetEmail(email)
+                .addOnSuccessListener {
+                    Toast.makeText(
+                        this,
+                        "Password reset link sent to your email",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        this,
+                        "Error: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
         ivTogglePassword.setOnClickListener{
             if (isPasswordVisible) {
                 // Hide password
@@ -60,41 +90,60 @@ class LoginPage : AppCompatActivity() {
 //
 
     private fun loginUser() {
-        val username = etUsername.text.toString().trim()
+        val email = etemail.text.toString().trim()
         val password = etPassword.text.toString().trim()
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Fill all fields", Toast.LENGTH_SHORT).show()
             return
         }
 
         //  Find email
         db.collection("users")
-            .whereEqualTo("username", username)
+            .whereEqualTo("email", email)
             .get()
             .addOnSuccessListener { query ->
                 if (query.isEmpty) {
-                    Toast.makeText(this, "No account found. Please create an account first.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "No account found. Please create an account first.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     return@addOnSuccessListener
                 }
 
                 val email = query.documents[0].getString("email")!!
-
-                //  Login using Firebase Auth
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnSuccessListener {
-                        startActivity(
-                            Intent(this, HomeActivity::class.java)
-                        )
-                        finish()
-                    }
+
+                        val user =
+                            FirebaseAuth.getInstance().currentUser ?: return@addOnSuccessListener
+
+
+
+                                startActivity(Intent(this, HomeActivity::class.java))
+                                finish()
+                            }
+
                     .addOnFailureListener {
-                        Log.e("AUTH_ERROR",it.message ?: "error")
                         Toast.makeText(this, "Wrong Credentials", Toast.LENGTH_SHORT).show()
                     }
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
+                //  Login using Firebase Auth
+                //  auth.signInWithEmailAndPassword(email, password)
+                //    .addOnSuccessListener {
+                //      startActivity(
+                //  Intent(this, HomeActivity::class.java)
+                //)
+                //  finish()
+                //}
+                //.addOnFailureListener {
+                //      Log.e("AUTH_ERROR",it.message ?: "error")
+                //        Toast.makeText(this, "Wrong Credentials", Toast.LENGTH_SHORT).show()
+                //      }
+                //}
+                //.addOnFailureListener {
+                //     Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
+                //   }
             }
     }
 }

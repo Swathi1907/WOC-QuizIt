@@ -6,6 +6,7 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -22,14 +23,16 @@ class SignUpActivity: AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val etusername = findViewById<EditText>(R.id.etUsername)
         val etemail = findViewById<EditText>(R.id.etEmail)
-
+val btnlogin=findViewById<TextView>(R.id.login)
         val etpassword = findViewById<EditText>(R.id.etPassword)
         val btnNext = findViewById<Button>(R.id.btnNext)
         val ivTogglePassword = findViewById<ImageView>(R.id.ivTogglePassword)
 
         var isPasswordVisible = false
 
-
+btnlogin.setOnClickListener {
+    startActivity(Intent(this, LoginPage::class.java))
+}
         ivTogglePassword.setOnClickListener{
             if (isPasswordVisible) {
                 // Hide password
@@ -59,14 +62,12 @@ class SignUpActivity: AppCompatActivity() {
                 Toast.makeText(this, "Fill All Fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            //username unique
             db.collection("users")
                 .whereEqualTo("username", username)
                 .get()
                 .addOnSuccessListener {
-                    if (!it.isEmpty) {
-                        Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show()
-                        return@addOnSuccessListener
-                    }
+
                     // continue signup
 
                     createUser(username,email,password)
@@ -92,14 +93,14 @@ class SignUpActivity: AppCompatActivity() {
             }
             .addOnFailureListener { e ->
 
-                if (e is FirebaseAuthUserCollisionException) {
-                    Toast.makeText(this,"Email already exists",Toast.LENGTH_SHORT).show()
+             //   if (e is FirebaseAuthUserCollisionException) {
+               //     Toast.makeText(this,"Email already exists",Toast.LENGTH_SHORT).show()
 
-                }
+                //}
 
-                else {
+
                     Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
-                }
+
             }
     }
     private fun saveUserProfileAndGo(

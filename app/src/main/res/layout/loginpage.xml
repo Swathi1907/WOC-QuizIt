@@ -22,78 +22,108 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="367dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="270dp"
-            android:layout_marginBottom="40dp"
-            android:paddingStart="60dp"
+            android:layout_width="371dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
             android:text="Good to see you again! "
             android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textSize="29sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="55dp"
             tools:layout_editor_absoluteY="164dp" />
 
         <EditText
-            android:id="@+id/etusername"
-            android:layout_width="355dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/etemail"
+            android:layout_width="343dp"
+            android:layout_height="57dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/mainxml"
-            android:hint="Username"
-            android:textColorHint="#999"
+            android:hint="Email Id"
             android:textColor="@color/black"
+            android:textColorHint="#999"
             tools:layout_editor_absoluteX="23dp"
             tools:layout_editor_absoluteY="352dp" />
 
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="353dp"
+            android:layout_height="77dp">
+
 
             <EditText
                 android:id="@+id/etPassword"
                 android:layout_width="355dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_height="57dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/mainxml"
                 android:hint="Password"
-
                 android:textColor="@color/black"
                 android:textColorHint="#999"
                 tools:layout_editor_absoluteX="22dp"
                 tools:layout_editor_absoluteY="416dp" />
 
-
             <ImageView
                 android:id="@+id/ivTogglePassword"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="23dp"
                 android:contentDescription="Toggle password"
                 android:padding="4dp"
                 android:src="@drawable/ic_eyeclosed"
                 app:tint="@android:color/black" />
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="356dp"
+            android:id="@+id/forgot"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:paddingStart="220sp"
+            android:textColor="@android:color/holo_orange_dark"/>
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="59dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#14B8A6"
+            android:text="Next..."
+            android:layout_marginTop="2dp"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"
+            tools:layout_editor_absoluteX="292dp"
+            tools:layout_editor_absoluteY="565dp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="50dp"
+android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account? "/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SignUp "
+                android:id="@+id/signup"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_orange_dark"/>
 
-
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
-        android:layout_marginRight="10dp"
-        android:backgroundTint="#14B8A6"
-        android:textColor="#FFFFFF"
-        android:text="Next..."
-        android:textSize="17dp"
-        tools:layout_editor_absoluteX="292dp"
-        tools:layout_editor_absoluteY="565dp" />
-
-
+        </LinearLayout>
 </LinearLayout>
 </FrameLayout>
