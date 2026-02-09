@@ -20,24 +20,37 @@ import com.google.firebase.storage.FirebaseStorage
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var profile: ImageView
-    private val PICK_IMAGE = 2007
+   // private val PICK_IMAGE = 2007
     private lateinit var tvEmailid: TextView
     private lateinit var etUsername: EditText
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+   // override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+     //   super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
-            val uri = data?.data ?: return
-            profile.setImageURI(uri)
-            uploadProfileImage()
-        }
-    }
+       // if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+         //   val uri = data?.data ?: return
+           // profile.setImageURI(uri)
+           // uploadProfileImage()
+        //}
+    //}
+    //
+
+
+
 
     override fun onResume() {
         super.onResume()
         loadProfileDta()
     }
+    private var selectedImageUri: Uri? = null
 
+    private val pickImage =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            if (uri != null) {
+                selectedImageUri = uri
+                profile.setImageURI(uri) // preview
+uploadProfileImage()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +116,7 @@ profile.setOnClickListener {
                 .addOnFailureListener {
                     Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show()
                 }
-            uploadProfileImage()
+          //  uploadProfileImage()
         }
 
         btnLogout.setOnClickListener {
@@ -114,15 +127,7 @@ profile.setOnClickListener {
             )
         }
     }
-    private var selectedImageUri: Uri? = null
 
-    private val pickImage =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            if (uri != null) {
-                selectedImageUri = uri
-                profile.setImageURI(uri) // preview
-            }
-        }
 
     private fun saveImageUrlToFirestore(url: String) {
         val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
