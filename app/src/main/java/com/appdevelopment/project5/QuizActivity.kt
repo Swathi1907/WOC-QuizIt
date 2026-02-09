@@ -128,7 +128,7 @@ difficulty = selectedDifficulty,
                     .setPositiveButton("OK") { _, _ ->
 
                         //  Navigate ONLY after OK is pressed
-                        val intent = Intent(this@QuizActivity, HomeActivity::class.java)
+                        val intent = Intent(this@QuizActivity, fragactivity::class.java)
                         intent.flags =
                             Intent.FLAG_ACTIVITY_CLEAR_TOP
                         startActivity(intent)
@@ -195,7 +195,7 @@ difficulty = selectedDifficulty
             .setCancelable(false)
             .setPositiveButton("OK") { _, _ ->
                 startActivity(
-                    Intent(this, HomeActivity::class.java)
+                    Intent(this, fragactivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 )
                 finish()

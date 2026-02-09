@@ -18,7 +18,7 @@ import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivity: AppCompatActivity() {
     private lateinit var profile: ImageView
    // private val PICK_IMAGE = 2007
     private lateinit var tvEmailid: TextView

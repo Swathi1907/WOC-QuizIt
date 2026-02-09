@@ -27,7 +27,7 @@ class FirstPageActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             // User already logged in → go to Home
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, fragactivity::class.java))
             finish()
         }
     }

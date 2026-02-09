@@ -40,15 +40,15 @@ class PerformanceActivity : AppCompatActivity() {
              bottomNav.setOnItemSelectedListener { item ->
                  when (item.itemId) {
                      R.id.nav_home -> {
-                         startActivity(Intent(this, HomeActivity::class.java))
+                         startActivity(Intent(this, fragactivity::class.java))
                          true
                      }
                      R.id.nav_past -> {
-                         startActivity(Intent(this, PastQuizzesActivity::class.java))
+                         startActivity(Intent(this, fragactivity::class.java))
                          true
                      }
                      R.id.nav_profile -> {
-                         startActivity(Intent(this, ProfileActivity::class.java))
+                         startActivity(Intent(this, fragactivity::class.java))
                          true
                      }
                      else -> false

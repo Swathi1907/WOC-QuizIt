@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project5"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".PastQuizzesActivity"
-            android:exported="false" />
+
         <!-- ONLY HomeActivity has LAUNCHER -->
         <activity
             android:name=".FirstPageActivity"
@@ -26,12 +24,12 @@
             </intent-filter>
         </activity> <!-- NO intent-filter here -->
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity" />
+
+        <activity android:name=".fragactivity" />
+
         <activity android:name=".QuizActivity" />
         <activity android:name=".LoginPage" />
-        <activity android:name=".QuizSetUpActivity" />
+
         <activity android:name=".PerformanceActivity" />
         <activity android:name=".QuizReviewActivity" />
     </application>

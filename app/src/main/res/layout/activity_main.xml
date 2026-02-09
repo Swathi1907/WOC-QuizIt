@@ -23,15 +23,16 @@ android:id="@+id/main"
 
         <!-- Title -->
         <TextView
-            android:text="QuizzIt"
-            android:textSize="29sp"
-            android:textStyle="bold"
-            android:paddingStart="140dp"
-            android:layout_marginTop="50dp"
-            android:textColor="@color/white"
-            android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginBottom="20dp"
+
+            android:text="QuizzIt"
+            android:textColor="@color/white"
+            android:textSize="29sp"
+            android:textStyle="bold" />
 
         <!-- PDF Card -->
         <LinearLayout
@@ -179,16 +180,6 @@ android:layout_marginTop="20dp"
 
 
     </ScrollView>
-<com.google.android.material.bottomnavigation.BottomNavigationView
-android:id="@+id/bottomNavigation"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-app:menu="@menu/bottom_nav_menu"
-app:itemIconTint="@color/black"
-app:itemTextColor="@color/black"
-android:background="@color/white"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 

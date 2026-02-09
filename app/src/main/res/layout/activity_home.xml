@@ -307,15 +307,5 @@ android:layout_marginTop="10dp"
 
 </LinearLayout>
 </LinearLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu"
-app:layout_constraintBottom_toBottomOf="parent"
-        app:labelVisibilityMode="labeled"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
-        android:background="@color/white"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

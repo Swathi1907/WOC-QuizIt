@@ -128,7 +128,7 @@ val uid = user.uid // userid unique string automatically created by firebase aut
                     .document(uid)
                     .set(userMap, SetOptions.merge()) // overwrite safely
                     .addOnSuccessListener {
-                        startActivity(Intent(this, HomeActivity::class.java))
+                        startActivity(Intent(this, fragactivity::class.java))
                         finish()
                     }
                     .addOnFailureListener {
