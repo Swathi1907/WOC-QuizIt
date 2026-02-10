@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.appdevelopment.project5.room.AppDatabase
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,15 +30,16 @@ class HomeFragment: Fragment(R.layout.activity_home) {
       //  super.onResume()
         //loadUsername()
     //}
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Toast.makeText(this, "HomeActivity opened", Toast.LENGTH_SHORT).show()
-        super.onCreate(savedInstanceState)
+        super.onViewCreated(view,savedInstanceState)
 
         //  val btnAttemptedQuizzes = findViewById<Button>(R.id.btnAttemptedQuizzes)
         val tvgreetings = view.findViewById<TextView>(R.id.tvgreetings)
         val btnCreateQuiz = view.findViewById<Button>(R.id.btnCreateQuiz)
         //   pvQuizzes = findViewById<RecyclerView>(R.id.PastQuizzes) //pv=previous
-      //  val profile = findViewById<ImageView>(R.id.imageView2)
+       val profile = view.findViewById<ImageView>(R.id.imageView2)
         val btnPerformances = view.findViewById<Button>(R.id.btnPerformances)
         //  pvQuizzes.layoutManager = LinearLayoutManager(this)
 //
@@ -49,13 +51,15 @@ class HomeFragment: Fragment(R.layout.activity_home) {
         //  startActivity(intent)
         //}
 
-        loadUsername(tvgreetings)
 
+        loadUsername(tvgreetings)
+loadProfileImage(profile)
         // btnAttemptedQuizzes.setOnClickListener {
 
 
         //   loadingQuizResults()
         //}
+
         btnPerformances.setOnClickListener {
 
             parentFragmentManager.beginTransaction()
@@ -122,6 +126,26 @@ parentFragmentManager.beginTransaction()
                 if (doc.exists()) {
                     val username = doc.getString("username") ?: "User"
                     tv.text = "Hello, $username 👋"
+                }
+            }
+    }
+
+    private fun loadProfileImage(profile: ImageView) {
+        val user = FirebaseAuth.getInstance().currentUser ?: return
+
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(user.uid)
+            .get()
+            .addOnSuccessListener { doc ->
+                val img = doc.getString("profileImage")
+                if (!img.isNullOrEmpty()) {
+                    Glide.with(requireContext())
+                        .load(img)
+                        .circleCrop()
+                        .placeholder(R.drawable.boyandgirl)
+                        .error(R.drawable.boyandgirl)
+                        .into(profile)
                 }
             }
     }

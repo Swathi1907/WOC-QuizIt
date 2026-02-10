@@ -414,7 +414,7 @@ class MainFragment : Fragment(R.layout.activity_main) {
             lifecycleScope.launch {
                 val text = renderLimitedPagesAndRecognize(uri)
                 extractedText=text
-                tvOutput.text = text
+             //   tvOutput.text = text
                 Toast.makeText(requireContext(),"PDF Text Extracted", Toast.LENGTH_SHORT).show()
             }
         }

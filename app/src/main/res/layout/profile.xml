@@ -26,8 +26,33 @@
         android:textSize="25dp"
         android:textStyle="bold" />
 
+    <!-- PROFILE IMAGE WITH CAMERA ICON -->
+    <FrameLayout
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/boyandgirl" />
+
+        <ImageView
+            android:id="@+id/ivCamera"
+            android:layout_width="42dp"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="6dp"
+            android:padding="4dp"
+
+            android:src="@drawable/ic_camera"
+            app:tint="@color/white" />
+
+    </FrameLayout>
+   <!-- <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile"
         android:layout_width="147dp"
         android:layout_height="195dp"
@@ -36,12 +61,23 @@
         android:scaleType="centerCrop"
         android:src="@drawable/boyandgirl" />
 
+
+    <ImageView
+        android:id="@+id/ivCamera"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="6dp"
+        android:padding="6dp"
+        android:src="@drawable/ic_camera"
+
+        app:tint="@color/black"/> -->
     <LinearLayout
-        android:layout_width="378dp"
-        android:layout_height="247dp"
-        android:layout_marginLeft="10dp"
+        android:layout_width="367dp"
+        android:layout_height="251dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/profilepage"
 
         android:orientation="vertical">
@@ -115,9 +151,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
-                    android:text="Username"
                     android:enabled="true"
                     android:focusable="true"
+                    android:text="Username"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="normal"
@@ -179,14 +215,15 @@
 
         <Button
             android:id="@+id/update"
-            android:layout_width="366dp"
+            android:layout_width="343dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/shape1"
-            app:backgroundTint="#0F766E"
-            android:text="Update Profile" />
+            android:text="Update Profile"
+            app:backgroundTint="#0F766E" />
     </LinearLayout>
+
     <Button
         android:id="@+id/btnlogOut"
         android:layout_width="118dp"
